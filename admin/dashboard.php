@@ -20,5 +20,6 @@ $user = htmlspecialchars($_SESSION['username']);
 </head>
 <body>
     <h1>Hello <?= $user ?></h1>
+    <a href="add-products.php" class="btn btn-success mb-3">+ Add New Product</a>
 </body>
 </html>
