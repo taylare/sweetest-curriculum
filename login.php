@@ -10,19 +10,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){ //checking if the form was submitted
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        //connecting to our db:
-        $conn = mysqli_connect('127.0.0.1', 'root', '', 'sweetest-curriculum');
         
         // check if the connection worked
-        if (!$conn) {
+        if (!$dbc) {
             die("Connection failed: " . mysqli_connect_error());
         }
         //making the email input safe to use in the SQL query:
-        $email = mysqli_real_escape_string($conn, $email);
+        $email = mysqli_real_escape_string($dbc, $email);
 
         //building and running the sql query:
         $sql = "SELECT * FROM users WHERE userEmail = '$email'";
-        $result = mysqli_query($conn, $sql);
+        $result = mysqli_query($dbc, $sql);
 
         //check if user was found:
         if($result && mysqli_num_rows($result) === 1) {
@@ -55,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){ //checking if the form was submitted
             echo $error;
         }
         //close db connection:
-        mysqli_close($conn);
+        mysqli_close($dbc);
 
     }
 }
