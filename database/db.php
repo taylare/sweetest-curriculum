@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 
 // deepBlue server settings (default)
 $hostname = '127.0.0.1';

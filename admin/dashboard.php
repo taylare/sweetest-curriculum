@@ -1,5 +1,4 @@
 <?php
-session_start();
 include "../database/db.php";
 
 // block access if user is not logged in

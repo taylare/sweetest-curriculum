@@ -1,6 +1,6 @@
 <?php 
 include 'database/db.php';
-session_start();
+
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){ //checking if the form was submitted first 
