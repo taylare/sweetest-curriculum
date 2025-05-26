@@ -1,6 +1,6 @@
 <?php 
 include 'database/db.php';
-session_start();
+
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){ //checking if the form was submitted first 
@@ -45,12 +45,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){ //checking if the form was submitted
 
             
             } else { //passwords didnt match
-                $error = "invalid email or password";
-                echo $error;
+                $error = "Invalid password, please try again.";
             }
         } else { //no user with that email found
-            $error = "invalid email or password";
-            echo $error;
+            $error = "Invalid Email or Password.";
         }
         //close db connection:
         mysqli_close($dbc);
@@ -67,25 +65,96 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){ //checking if the form was submitted
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+
+    body {
+        background-color: rgb(213, 247, 255);
+        margin: 0;
+    }
+
+        .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        form h2 {
+            font-size: 24px;
+            margin-bottom: 18px;
+            text-align: center;
+            color: rgb(41, 42, 41);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        form input[name='email'],
+        form input[name='password'] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #d3d3d3;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background-color: rgb(41, 42, 41);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .btn:hover {
+            background-color: rgb(255, 174, 237);
+            transition: background-color 0.4s ease;
+        }
+
+        .error-msg {
+            color: rgb(255, 48, 65);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+
+    </style>
 </head>
 <body>
     
-<h2>Login</h2>
+<h2 class="text-center">Login</h2>
+<div class="form-container">
+    <form method="POST">
+    <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" name="email" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" required>
+    </div>
+    <button class="btn">Login</button>
+    <p class="mt-3">Don't have an account? <a href="register.php">Register here</a>.</p>
+    <?php if (isset($error)): ?>
+        <p class="error-msg"><?= htmlspecialchars($error) ?></p>
+    <?php endif; ?>
 
-<form method="POST">
-  <div class="mb-3">
-    <label class="form-label">Email</label>
-    <input type="email" name="email" class="form-control" required>
-  </div>
-  <div class="mb-3">
-    <label class="form-label">Password</label>
-    <input type="password" name="password" class="form-control" required>
-  </div>
-  <button class="btn btn-primary">Login</button>
 </form>
-
-<p class="mt-3">Don't have an account? <a href="register.php">Register here</a>.</p>
-
+    
+</div>
 
 </body>
 
