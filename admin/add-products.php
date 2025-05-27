@@ -1,46 +1,58 @@
 <?php
 include '../database/db.php';
+
+//only allow access to this page if the user is an admin
 if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] != 1) {
     header('Location: ../login.php');
     exit;
 }
-
+/**************************************************/
+//block of code that runs once form is submitted://
+/*************************************************/
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    //get form input values:
     $name = $_POST['name'];
     $description = $_POST['description'];
     $price = $_POST['price'];
     $category_id = $_POST['category_id'];
 
+    //image upload handling:
     $image_name = '';
     if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
         $upload_dir = '../assets/images/';
         $image_name = basename($_FILES['image']['name']);
-        $upload_path = $upload_dir . $image_name;
-        move_uploaded_file($_FILES['image']['tmp_name'], $upload_path);
+        $upload_path = $upload_dir . $image_name; //full path to save the image
+        move_uploaded_file($_FILES['image']['tmp_name'], $upload_path); //uploading the file
     }
 
+    //sanitising user input to prevent SQL injection:
     $name = mysqli_real_escape_string($dbc, $name);
     $description = mysqli_real_escape_string($dbc, $description);
     $price = (float)$price;
     $image_name = mysqli_real_escape_string($dbc, $image_name);
 
+    //inserting product into the products table:
     $sql = "INSERT INTO products (productName, description, price, imageURL)
             VALUES ('$name', '$description', $price, '$image_name')";
     mysqli_query($dbc, $sql);
 
-    $product_id = mysqli_insert_id($dbc);
+    //inserting a record into the product_category linking table:
+    $product_id = mysqli_insert_id($dbc); //fetching the most recent product id
     $category_id = (int)$category_id;
     $sqlCat = "INSERT INTO product_category (product_id, category_id) VALUES ($product_id, $category_id)";
     mysqli_query($dbc, $sqlCat);
 
     header("Location: dashboard.php");
 }
+/**END**/
 
+//fetching all categories from the db to show in the dropdown:
 $categories = [];
 $result = mysqli_query($dbc, "SELECT * FROM categories");
 if ($result) {
     while ($row = mysqli_fetch_assoc($result)) {
-        $categories[] = $row;
+        $categories[] = $row; 
     }
 }
 ?>
@@ -114,7 +126,8 @@ if ($result) {
       <div class="mb-3">
         <label class="form-label">Category</label>
         <select name="category_id" class="form-select" required>
-          <option value="">-- Select Category --</option>
+          <!-- populate dropdown options dynamically from PHP -->
+            <option value="">-- Select Category --</option>
           <?php foreach ($categories as $cat): ?>
             <option value="<?= $cat['category_id'] ?>"><?= htmlspecialchars($cat['category_name']) ?></option>
           <?php endforeach; ?>
