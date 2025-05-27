@@ -1,8 +1,9 @@
 <?php 
 include 'database/db.php';
 
-
-
+/**************************************************/
+/***BLOCK OF CODE THAT RUNS ONCE USER HITS LOGIN***/
+/*************************************************/
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){ //checking if the form was submitted first 
     if (empty($_POST['email']) || empty($_POST['password'])) { //if user didn't input data in either field, display error msg
         $error = "Please enter both email and password";
@@ -10,7 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){ //checking if the form was submitted
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        
         // check if the connection worked
         if (!$dbc) {
             die("Connection failed: " . mysqli_connect_error());
@@ -55,6 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){ //checking if the form was submitted
 
     }
 }
+
 
 
 ?>
@@ -129,8 +130,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){ //checking if the form was submitted
             color: rgb(255, 48, 65);
             font-family: Arial, Helvetica, sans-serif;
         }
-
-
     </style>
 </head>
 <body>
@@ -152,10 +151,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){ //checking if the form was submitted
         <p class="error-msg"><?= htmlspecialchars($error) ?></p>
     <?php endif; ?>
 
-</form>
-    
+</form>  
 </div>
-
 </body>
-
 </html>
