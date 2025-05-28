@@ -67,11 +67,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){ //checking if the form was submitted
     <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-
-    body {
-        background-color: rgb(213, 247, 255);
-        margin: 0;
-    }
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Pacifico&display=swap');
+        body {
+            background-color: rgb(228, 223, 229);
+            margin: 0;
+        }
 
         .form-container {
             display: flex;
@@ -82,7 +82,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){ //checking if the form was submitted
         }
 
         form {
-            background-color: white;
+            color:rgb(186, 255, 174);
+            background-color: #923c79;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
@@ -94,8 +95,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){ //checking if the form was submitted
             font-size: 24px;
             margin-bottom: 18px;
             text-align: center;
-            color: rgb(41, 42, 41);
-            font-family: Arial, Helvetica, sans-serif;
+            color: rgb(186, 255, 174);
+            font-family: 'Quicksand', sans-serif;
         }
 
         form input[name='email'],
@@ -114,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){ //checking if the form was submitted
             background-color: rgb(41, 42, 41);
             border: none;
             border-radius: 8px;
-            color: white;
+            color: rgb(186, 255, 174);
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
@@ -122,22 +123,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){ //checking if the form was submitted
         }
 
         .btn:hover {
-            background-color: rgb(255, 174, 237);
+            background-color: rgb(186, 255, 174);
             transition: background-color 0.4s ease;
+            color:#923c79;
         }
 
         .error-msg {
             color: rgb(255, 48, 65);
             font-family: Arial, Helvetica, sans-serif;
         }
+
+        .form-control:focus {
+            border-color: rgb(186, 255, 174);
+            box-shadow: 0 0 0 4px rgba(154, 255, 154, 0.87);
+        }
+
+        .register-link {
+            text-decoration: none;
+            color: white;
+            font-style: italic;
+            font-weight: bolder;
+        }
+
+        .register-link:hover {
+            color: rgb(186, 255, 174);
+            text-decoration: underline;
+        }
+
     </style>
 </head>
 <body>
     
-<h2 class="text-center">Login</h2>
 <div class="form-container">
+    
     <form method="POST">
     <div class="mb-3">
+        <h2 class="text-center">Login</h2>
         <label class="form-label">Email</label>
         <input type="email" name="email" class="form-control" required>
     </div>
@@ -146,7 +167,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){ //checking if the form was submitted
         <input type="password" name="password" class="form-control" required>
     </div>
     <button class="btn">Login</button>
-    <p class="mt-3">Don't have an account? <a href="register.php">Register here</a>.</p>
+    <p class="mt-3">Don't have an account? <a class="register-link" href="register.php">Register here</a>.</p>
     <?php if (isset($error)): ?>
         <p class="error-msg"><?= htmlspecialchars($error) ?></p>
     <?php endif; ?>

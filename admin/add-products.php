@@ -65,41 +65,75 @@ if ($result) {
   <title>Add Product</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
     body {
-      background: linear-gradient(to right,rgb(239, 151, 255), #e0f7fa);
-      min-height: 100vh;
+      background-color: rgb(228, 223, 229);
+      font-family: 'Quicksand', sans-serif;
+      color: rgb(186, 255, 174);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 40px 15px;
-      font-family: 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      padding: 30px;
+      margin: 0;
     }
 
     .card {
+      background-color: #923c79;
       border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+      padding: 25px;
       width: 100%;
       max-width: 600px;
-    }
-
-    .form-control:focus {
-      border-color: #ff9ac2;
-      box-shadow: 0 0 0 4px rgba(255, 154, 194, 0.3);
-    }
-
-    .btn-primary {
-      background-color: #ff9ac2;
-      border: none;
-    }
-
-    .btn-primary:hover {
-      background-color: #ff75b0;
+      color: rgb(186, 255, 174);
     }
 
     h2 {
       text-align: center;
       margin-bottom: 20px;
-      color: #444;
+      font-weight: 600;
+      color: rgb(186, 255, 174);
+    }
+
+    .form-label {
+      color: rgb(186, 255, 174);
+      font-weight: 500;
+    }
+
+    .form-control,
+    .form-select {
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 16px;
+      border: 1px solid #d3d3d3;
+      font-size: 16px;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      border-color: rgb(186, 255, 174);
+      box-shadow: 0 0 0 4px rgba(154, 255, 154, 0.6);
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 14px;
+      background-color: rgb(41, 42, 41);
+      border: none;
+      border-radius: 10px;
+      color: rgb(186, 255, 174);
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: 0.3s;
+    }
+
+    .btn-primary:hover {
+      background-color: rgb(186, 255, 174);
+      color: #923c79;
     }
   </style>
 </head>
