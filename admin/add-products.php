@@ -69,7 +69,7 @@ if ($result) {
     @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
 
     body {
-      background-color: rgb(228, 223, 229);
+      background-color: rgb(221, 220, 222);
       font-family: 'Quicksand', sans-serif;
       color: rgb(186, 255, 174);
       display: flex;
@@ -81,58 +81,55 @@ if ($result) {
     }
 
     .card {
-      background-color: #923c79;
-      border-radius: 16px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-      padding: 25px;
+      border-radius: 20px;
+      background-color: #fff;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
       width: 100%;
       max-width: 600px;
-      color: rgb(186, 255, 174);
+      padding: 30px;
+      border: 2px dashed #923c79;
+      transition: 0.3s ease;
     }
 
     h2 {
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       font-weight: 600;
-      color: rgb(186, 255, 174);
+      color:#923c79;
     }
 
-    .form-label {
-      color: rgb(186, 255, 174);
-      font-weight: 500;
+    label {
+      font-weight: 600;
+      color:rgb(171, 121, 244);
     }
 
     .form-control,
     .form-select {
-      border-radius: 10px;
-      padding: 10px;
-      margin-bottom: 16px;
-      border: 1px solid #d3d3d3;
-      font-size: 16px;
+      border-radius: 14px;
+      border: 1px solid #e3c6ff;
+      background-color: #fdf7ff;
+      transition: all 0.2s ease;
     }
 
     .form-control:focus,
     .form-select:focus {
-      border-color: rgb(186, 255, 174);
-      box-shadow: 0 0 0 4px rgba(154, 255, 154, 0.6);
+      border-color: #c8b6ff;
+      box-shadow: 0 0 0 4px rgba(207, 178, 255, 0.3);
+      background-color: #fcfaff;
     }
 
     .btn-primary {
-      width: 100%;
-      padding: 14px;
-      background-color: rgb(41, 42, 41);
+      background-color: #923c79;
+      background-size: 200% auto;
+      color: rgb(154, 255, 154);
       border: none;
-      border-radius: 10px;
-      color: rgb(186, 255, 174);
       font-weight: 600;
-      font-size: 16px;
-      cursor: pointer;
-      text-transform: uppercase;
-      transition: 0.3s;
+      border-radius: 14px;
+      transition: background-position 0.5s ease;
     }
 
     .btn-primary:hover {
-      background-color: rgb(186, 255, 174);
+      background-color: rgba(154, 255, 154, 0.87);
       color: #923c79;
     }
   </style>
