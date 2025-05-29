@@ -9,9 +9,14 @@
   </head>
 
     <?php
-        include 'database/db.php';
 
-        
+
+        // after committing the branch in git, don't forget to push the branch to gitlab using: git push origin <branch name> (case sensitive)
+        include 'database/db.php';
+        include 'admin/dashboard.php';
+        // difference between echo and print is that echo is faster, but print gives a return value of 1 so it can be used in expressions (idk why that would be necessary but cool)
+        echo "$products";
+
     ?>
 
 </html>
