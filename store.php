@@ -1,3 +1,12 @@
+<?php
+  include "/database/db.php";
+
+  // query that grabs all rows from the products column
+  $selectAllProductQuery = 'SELECT * FROM products;';
+  
+  $result = mysqli_query($dbc, $selectAllProductQuery);
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -8,15 +17,14 @@
     <link href="includes/styles.css" rel="stylesheet">
   </head>
 
-    <?php
-
-
-        // after committing the branch in git, don't forget to push the branch to gitlab using: git push origin <branch name> (case sensitive)
-        include 'database/db.php';
-        include 'admin/dashboard.php';
+  <body>
+    <!-- Start of php tag -->
+    <?php 
         // difference between echo and print is that echo is faster, but print gives a return value of 1 so it can be used in expressions (idk why that would be necessary but cool)
-        echo "$products";
+        echo "<h1> We're so back </h1>"
+    ?> <!-- closing php tag -->
 
-    ?>
+  </body>
+    
 
 </html>
