@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS order_items, order_history, reviews, cart, product_category, categories, products, users;
+---DROP TABLE IF EXISTS order_items, order_history, reviews, cart, product_category, categories, products, users;
  
 -- USERS
 CREATE TABLE users (
@@ -106,6 +106,26 @@ INSERT INTO products (productName, price, imageURL, description) VALUES
 ('Chocolate Macaron', 3.49, 'https://upload.wikimedia.org/wikipedia/commons/f/fb/Chocolate_macaron.jpg', 'Rich chocolate filling'),
 ('Pistachio Macaron', 3.29, 'https://upload.wikimedia.org/wikipedia/commons/2/24/Pistachio_Macaron.jpg', 'Nutty and sweet'),
 ('Strawberry Macaron', 3.19, 'https://upload.wikimedia.org/wikipedia/commons/f/fe/Strawberry_Macaron.jpg', 'Sweet strawberry filling');
+
+
+
+
+INSERT INTO products (productName, imageURL, price, description) VALUES
+('Banana Cream Pie', 'banana-creampie.png', 3.50, 'A sweet banana macaron with creamy pie filling.'),
+('Black Sesame Matcha', 'black-sesame-matcha.png', 3.50, 'Earthy matcha balanced with nutty black sesame seeds.'),
+('Bubblegum', 'bubblegum.png', 3.50, 'A bright blue treat with nostalgic bubblegum flavor.'),
+('Choc Hazelnut', 'choc-hazelnut.png', 3.50, 'Rich chocolate with crunchy hazelnut pieces.'),
+('Coffee', 'coffee.png', 3.50, 'Bold and aromatic coffee-flavored macaron.'),
+('Earl Grey', 'earl-grey.png', 3.50, 'Delicately flavored with bergamot-infused Earl Grey tea.'),
+('Fuzzy Peach', 'fuzzy-peach.png', 3.50, 'Fruity and fun, just like the classic candy.'),
+('Mango Lime', 'mango-lime.png', 3.50, 'Tropical mango paired with zesty lime.'),
+('Pineapple Raspberry', 'pineapple-raspberry.png', 3.50, 'Tangy pineapple with sweet raspberry filling.'),
+('Taro', 'taro.png', 3.50, 'Sweet and nutty taro flavor with a purple twist.'),
+('Vanilla', 'vanilla.png', 3.50, 'Classic vanilla bean macaron with a creamy center.'),
+('Watermelon', 'watermelon.png', 3.50, 'Juicy watermelon flavor with crunchy seeds for fun.');
+
+
+
 
 -- CATEGORIES
 INSERT INTO categories (category_name) VALUES
