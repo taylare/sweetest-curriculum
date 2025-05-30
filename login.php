@@ -39,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     header("Location: admin/dashboard.php");
                     exit;
                 } else {
+                    $_SESSION['logged-in'] = true;
                     header("Location: index.php");
                     exit;
                 }
