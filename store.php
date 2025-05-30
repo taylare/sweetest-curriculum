@@ -76,7 +76,7 @@
         echo "<div class=\"d-flex flex-row m-5\">";
           foreach ($productsAndCategories as $product) {
             echo "<div class=\"card {$product['category_name']}\" name=\"product\" style=\"width: 18rem;\">
-                    <img src=\"{$product['imageURL']}\" class=\"card-img-top\" alt=\"...\">
+                    <img src=\"assets/images/{$product['imageURL']}\" class=\"card-img-top\" alt=\"...\">
                     <div class=\"card-body\">
                       <h5 class=\"card-title\"> {$product['productName']} </h5>
                       <p class=\"card-text\"> {$product['description']} </p> 
