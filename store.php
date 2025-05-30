@@ -63,21 +63,22 @@
                 $categoryID = 1;
                 // generate a checkbox input with it's own ID based off of each category in the database
                 foreach ($categories as $category) {
-                  echo "<input type=\"checkbox\" id=\"category$categoryID\" name=\"category$categoryID\" value=\"{$category['category_name']}\"> 
+                  echo "<input type=\"checkbox\" id=\"category$categoryID\" name=\"category\" value=\"{$category['category_name']}\"> 
                         <label for=\"category$categoryID\"> {$category['category_name']} </label> 
                         <br>";
                   $categoryID++;
                 }
+                echo "<button class=\"btn btn-success mt-2\" id=\"btn-filter-products\">Filter</button>";
         echo "</div>";
         
         // loop through each product and produce cards using productName, price, description, and imageURL, give each card their product's category name as
         // a class, this will be used to filter items using JQUERY
         echo "<div class=\"d-flex flex-row m-5\">";
           foreach ($productsAndCategories as $product) {
-            echo "<div class=\"card {$product['category_name']}\" style=\"width: 18rem;\">
+            echo "<div class=\"card {$product['category_name']}\" name=\"product\" style=\"width: 18rem;\">
                     <img src=\"{$product['imageURL']}\" class=\"card-img-top\" alt=\"...\">
                     <div class=\"card-body\">
-                      <h5 class=\"card-title\">{$product['productName']} </h5>
+                      <h5 class=\"card-title\"> {$product['productName']} </h5>
                       <p class=\"card-text\"> {$product['description']} </p> 
                     </div>
                   </div>
@@ -87,6 +88,10 @@
         
     ?> <!-- closing php tag -->
 
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="assets/js/storeFilterScript.js"></script>
   </body>
     
 
