@@ -17,14 +17,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $price = $_POST['price'];
     $category_id = $_POST['category_id'];
 
-    //image upload handling:
+  
+    // image upload handling:
     $image_name = '';
+    $upload_error = '';
+
     if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
         $upload_dir = '../assets/images/';
         $image_name = basename($_FILES['image']['name']);
-        $upload_path = $upload_dir . $image_name; //full path to save the image
-        move_uploaded_file($_FILES['image']['tmp_name'], $upload_path); //uploading the file
+        $upload_path = $upload_dir . $image_name;
+
+        // check if upload folder exists and is writable
+        if (!is_writable($upload_dir)) {
+            $upload_error = "Upload folder is not writable.";
+        } else {
+            // try to move the uploaded file
+            if (!move_uploaded_file($_FILES['image']['tmp_name'], $upload_path)) {
+                $upload_error = "There was a problem uploading your image. Please try again.";
+            }
+        }
+    } else {
+        $upload_error = "Something went wrong while uploading the image.";
     }
+
+
 
     //sanitising user input to prevent SQL injection:
     $name = mysqli_real_escape_string($dbc, $name);
@@ -169,6 +185,9 @@ if ($result) {
         <label class="form-label">Product Image</label>
         <input type="file" name="image" class="form-control" required/>
       </div>
+      <?php if (!empty($upload_error)): ?>
+          <div class="alert alert-danger"><?= htmlspecialchars($upload_error) ?></div>
+      <?php endif; ?>
 
       <button type="submit" class="btn btn-primary w-100">Add Product</button>
     </form>

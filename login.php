@@ -15,7 +15,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-
         //sanitize email to prevent SQL injection
         $email = mysqli_real_escape_string($dbc, $email);
 
