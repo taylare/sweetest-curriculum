@@ -167,7 +167,7 @@ if ($result) {
 
       <div class="mb-3">
         <label class="form-label">Product Image</label>
-        <input type="file" name="image" class="form-control" />
+        <input type="file" name="image" class="form-control" required/>
       </div>
 
       <button type="submit" class="btn btn-primary w-100">Add Product</button>

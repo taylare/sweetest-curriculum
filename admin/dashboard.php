@@ -142,6 +142,7 @@ if ($result) {
         <th>ID</th>
         <th>Image</th>
         <th>Name</th>
+        <th>Description</th>
         <th>Price</th>
         <th>Category</th>
         <th>Actions</th>
@@ -157,11 +158,12 @@ if ($result) {
                 <?php endif; ?>
                 </td>
                 <td><?= htmlspecialchars($product['productName']) ?></td>
+                <td><?= htmlspecialchars( $product['description']) ?></td>
                 <td>$<?= number_format($product['price'], 2) ?></td>
                 <td><?= htmlspecialchars($product['category_name']) ?></td>
                 <td>
-                <a href="edit_product.php?id=<?= $product['product_id'] ?>" class="btn btn-sm btn-warning">Edit</a>
-                <a href="delete_product.php?id=<?= $product['product_id'] ?>" class="btn btn-sm btn-danger"
+                <a href="edit-product.php?id=<?= $product['product_id'] ?>" class="btn btn-sm btn-warning">Edit</a>
+                <a href="remove-product.php?id=<?= $product['product_id'] ?>" class="btn btn-sm btn-danger"
                     onclick="return confirm('Are you sure you want to delete this product?');">Delete</a>
                 </td>
             </tr>
