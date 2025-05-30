@@ -86,3 +86,139 @@ if ($result) {
     }
 }
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Edit Product</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+    body {
+      background-color: rgb(221, 220, 222);
+      font-family: 'Quicksand', sans-serif;
+      color: rgb(186, 255, 174);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 30px;
+      margin: 0;
+    }
+
+    .card {
+      border-radius: 20px;
+      background-color: #fff;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      width: 100%;
+      max-width: 600px;
+      padding: 30px;
+      border: 2px dashed #923c79;
+      transition: 0.3s ease;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-weight: 600;
+      color:#923c79;
+    }
+
+    label {
+      font-weight: 600;
+      color:rgb(171, 121, 244);
+    }
+
+    .form-control,
+    .form-select {
+      border-radius: 14px;
+      border: 1px solid #e3c6ff;
+      background-color: #fdf7ff;
+      transition: all 0.2s ease;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      border-color: #c8b6ff;
+      box-shadow: 0 0 0 4px rgba(207, 178, 255, 0.3);
+      background-color: #fcfaff;
+    }
+
+    .btn-primary {
+      background-color: #923c79;
+      background-size: 200% auto;
+      color: rgb(154, 255, 154);
+      border: none;
+      font-weight: 600;
+      border-radius: 14px;
+      transition: background-position 0.5s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: rgba(154, 255, 154, 0.87);
+      color: #923c79;
+    }
+
+    img {
+      border-radius: 10px;
+      margin-bottom: 10px;
+      max-width: 100px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card p-4">
+    <h2>Edit Product</h2>
+    <form method="POST" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label class="form-label">Product Name</label>
+        <input type="text" name="name" class="form-control" value="<?= htmlspecialchars($product['productName']) ?>" required />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Description</label>
+        <textarea name="description" class="form-control" required><?= htmlspecialchars($product['description']) ?></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Price</label>
+        <input type="number" name="price" class="form-control" step="0.01" value="<?= $product['price'] ?>" required />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Category</label>
+        <select name="category_id" class="form-select" required>
+          <option value="">-- Select Category --</option>
+          <?php foreach ($categories as $cat): ?>
+            <option value="<?= $cat['category_id'] ?>" <?= $cat['category_id'] == $product['category_id'] ? 'selected' : '' ?>>
+              <?= htmlspecialchars($cat['category_name']) ?>
+            </option>
+          <?php endforeach; ?>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Current Image</label><br>
+        <?php if ($product['imageURL']): ?>
+          <img src="../assets/images/<?= $product['imageURL'] ?>" alt="Product Image">
+        <?php else: ?>
+          <p>No image available</p>
+        <?php endif; ?>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Change Image</label>
+        <input type="file" name="image" class="form-control" />
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Update Product</button>
+    </form>
+  </div>
+
+</body>
+</html>
+
