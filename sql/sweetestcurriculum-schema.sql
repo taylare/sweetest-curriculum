@@ -1,4 +1,4 @@
----DROP TABLE IF EXISTS order_items, order_history, reviews, cart, product_category, categories, products, users;
+DROP TABLE IF EXISTS order_items, order_history, reviews, cart, product_category, categories, products, users;
  
 -- USERS
 CREATE TABLE users (
