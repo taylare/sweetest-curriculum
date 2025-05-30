@@ -78,11 +78,27 @@ CREATE TABLE order_items (
 #------------------------------------------------------------
 -- USERS
 INSERT INTO users (username, userEmail, isAdmin, userPassword) VALUES
-('Tayla', 'tayla@example.com', FALSE, 'pw'),
+('Tayla', 'tayla@example.com', FALSE, 'tayla_pass'),
 ('Admin', 'admin@macarons.com', TRUE, 'admin_pass'),
 ('Mayet', 'mayet@example.com', FALSE, 'mayet_pass'),
 ('Caleb', 'caleb@example.com', FALSE, 'caleb_pass'),
-('Brett', 'brett@example.com', FALSE, 'brett_pass');
+('Brett', 'brett@example.com', FALSE, 'brett_pass'),
+('LeroyJankins', 'Leroy35@icloud.com', FALSE, 'LeroyJ_pw'),
+('JoanneCallahan', 'JoCallahan.business@gmail.com', FALSE, 'JoanneC_pw'),
+('ShaniaMarsh', 'Shainia.Marsh@yandex.com', FALSE, 'ShaniaM_pw'),
+('VioletBowen', 'ViBowen@outlook.com', FALSE, 'VioletB_pw'),
+('MyrtleHoward', 'Myrtle.Howards62@icloud.com', FALSE, 'MyrtleH_pw'),
+('LewisSilva', 'LewisS@aol.com', FALSE, 'LewisS_pw'),
+('AmayaBarr', 'AmaBarr@gmail.com', FALSE, 'AmayaB_pw'),
+('BethanGoodman', 'TheBethanGoodman@domain.co', FALSE, 'BethanG_pw'),
+('LaurieHardy', 'Lhardy@google.ca', FALSE, 'LaurieH_pw'),
+('HectorChapman', 'Hectorrocks@yahoo.com', FALSE, 'HectorC_pw'),
+('GordonBroom', 'GordonBroom@gmail.com', FALSE, 'JustAChillGuy'),
+('Doug Greening', 'DougGreening@google.com', FALSE, 'abc123'),
+('BrandonDevnich', 'BrandonDevnich@instructor.ca', FALSE, 'CompsciWizard'),
+('SteveLang', 'steveLang@aol.com', FALSE, 'GiraffeLover'),
+('LebronJames', 'LebronJ@gmail.com', FALSE , 'THEGOAT');
+
 
 -- PRODUCTS
 INSERT INTO products (productName, price, imageURL, description) VALUES
@@ -171,6 +187,34 @@ JOIN order_history oh ON oi.order_id = oh.order_id
 WHERE oh.user_id = 3 AND oi.product_id = 1
 LIMIT 1;
 
+INSERT IGNORE INTO reviews (user_id, product_id, comment, stars)
+SELECT 7, 1, 'Authentic French vanilla flavour with a crunchy outside and chewy inside', 4
+FROM order_items oi
+JOIN order_history oh ON oi.order_id = oh.order_id
+WHERE oh.user_id = 7 AND oi.product_id = 1
+LIMIT 1;
+
+INSERT IGNORE INTO reviews (user_id, product_id, comment, stars)
+SELECT 8, 2, "Amazing! Had a very Intense, rich chocolate flavour that wasn't too sweet", 5
+FROM order_items oi
+JOIN order_history oh ON oi.order_id = oh.order_id
+WHERE oh.user_id = 8 AND oi.product_id = 2
+LIMIT 1;
+
+INSERT IGNORE INTO reviews (user_id, product_id, comment, stars)
+SELECT 9, 3, "Disappointing. The shells too hard with a weak, artificial pistachio flavor making it overly sweet.", 2
+FROM order_items oi
+JOIN order_history oh ON oi.order_id = oh.order_id
+WHERE oh.user_id = 9 AND oi.product_id = 3
+LIMIT 1;
+
+INSERT IGNORE INTO reviews (user_id, product_id, comment, stars)
+SELECT 10, 4, "So refreshing! It was incredibly fruity, with a very acidic aftertaste that kept it from being too overly sweet.", 5
+FROM order_items oi
+JOIN order_history oh ON oi.order_id = oh.order_id
+WHERE oh.user_id = 10 AND oi.product_id = 4
+LIMIT 1;
+
 --view all reviews by userid 3
 SELECT 
     r.user_id,
@@ -232,6 +276,7 @@ WHERE p.productName LIKE '%choco%'
 -----------------------------------------------------------------
 
 --------------add a new macaron product -------------------------
+
 INSERT INTO products (productName, price, imageURL, description)
 VALUES ('Matcha Macaron', 3.19, 'matcha.jpg', 'Green Tea Matcha filling');
 
