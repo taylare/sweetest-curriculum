@@ -101,15 +101,6 @@ INSERT INTO users (username, userEmail, isAdmin, userPassword) VALUES
 
 
 -- PRODUCTS
-INSERT INTO products (productName, price, imageURL, description) VALUES
-('Vanilla Macaron', 2.99, 'https://upload.wikimedia.org/wikipedia/commons/6/6a/Macarons_Vanilla.jpg', 'Classic vanilla flavor'),
-('Chocolate Macaron', 3.49, 'https://upload.wikimedia.org/wikipedia/commons/f/fb/Chocolate_macaron.jpg', 'Rich chocolate filling'),
-('Pistachio Macaron', 3.29, 'https://upload.wikimedia.org/wikipedia/commons/2/24/Pistachio_Macaron.jpg', 'Nutty and sweet'),
-('Strawberry Macaron', 3.19, 'https://upload.wikimedia.org/wikipedia/commons/f/fe/Strawberry_Macaron.jpg', 'Sweet strawberry filling');
-
-
-
-
 INSERT INTO products (productName, imageURL, price, description) VALUES
 ('Banana Cream Pie', 'banana-creampie.png', 3.50, 'A sweet banana macaron with creamy pie filling.'),
 ('Black Sesame Matcha', 'black-sesame-matcha.png', 3.50, 'Earthy matcha balanced with nutty black sesame seeds.'),
@@ -200,6 +191,16 @@ ORDER BY oh.order_id DESC;
 ----------------------------------------------------------
 ------------------leaving a review------------------------
 ----------------------------------------------------------
+
+UPDATE order_items
+SET order_id = 3
+WHERE product_id = 3
+LIMIT 1;
+
+INSERT INTO order_items (order_id, product_id, quantity, price)
+VALUES (2, 2, 3, 8.97),
+(4, 4, 1, 2.99);
+
 INSERT IGNORE INTO reviews (user_id, product_id, comment, stars)
 SELECT 3, 1, 'yummy!', 5
 FROM order_items oi

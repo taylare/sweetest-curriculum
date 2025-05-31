@@ -1,0 +1,483 @@
+.nav-link {
+    margin-left: 1em;
+}
+
+.navbar {
+    --bs-navbar-brand-color: #FCF3FF;
+    --bs-navbar-brand-hover-color: #FCF3FF;
+    --bs-navbar-active-color: #FCF3FF;
+    --bs-navbar-color: #FCF3FF;
+    --bs-navbar-hover-color: #FCF3FF;
+}
+
+.navbar a {
+    color: #FCF3FF;
+}
+
+body {
+    color: rgb(14, 29, 0);
+    /** background-image: url('https://images.unsplash.com/photo-1569864358642-9d1684040f43?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); **/
+}
+
+.container {
+    background-color: #FCF3FF;
+    height: 100vh;
+}
+
+#navbar_brand {
+    justify-content: center;
+    display: flex;
+}
+
+.text_brand {
+    margin: 4px;
+    color: #A4D1A5;
+    text-shadow: 2px 1px black;
+}
+
+.navbar-brand {
+    margin: 0;
+}
+
+.btn-primary {
+    border: #913c7900;
+    --bs-btn-color: #FCF3FF;
+    --bs-btn-bg: #00000000;
+    --bs-btn-border-color: #00000000;
+    background-color: #00000000;
+    --bs-btn-hover-bg: #00000000;
+    --bs-btn-active-bg: #00000000;
+}
+
+.btn-close {
+    --bs-btn-close-focus-shadow: #00000000;
+}
+
+.logo {
+    margin: 4px;
+}
+
+.offcanvas-header {
+    background-color: #913C79;
+    color: #FCF3FF;
+}
+
+.offcanvas-body {
+    background-color: #913C79;
+    color: #FCF3FF;
+}
+
+.offcanvas-body a {
+    color: #FCF3FF;
+}
+
+
+
+
+
+
+
+#connect {
+    margin: 0;
+}
+
+a {
+    color: #913C79;
+}
+
+footer a {
+    color: #FCF3FF;
+}
+
+.horizontal_separator {
+    border-bottom: 1px dashed #fcf3ff8c;
+    margin-bottom: 1rem;
+}
+
+.p-2 {
+    padding: 1rem !important;
+}
+
+.bg-body-tertiary {
+    background-color: #913C79 !important;
+}
+
+footer {
+    color: #FCF3FF;
+    padding: 5%;
+    background-color: #913C79;
+    text-align: center;
+    margin-top: 5%;
+}
+
+@media (min-width: 992px) {
+    .navbar-expand-lg .navbar-collapse {
+       justify-content: flex-end;
+    }
+}
+
+
+
+/**edit-products page css**/
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+.edit-product-body {
+  background-color: rgb(221, 220, 222);
+  font-family: 'Quicksand', sans-serif;
+  color: rgb(186, 255, 174);
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.edit-product-card {
+  margin: 60px auto 20px auto;
+  max-width: 500px;
+}
+
+.edit-product-card {
+  border-radius: 20px;
+  background-color: #fff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 600px;
+  padding: 30px;
+  border: 2px dashed #923c79;
+  transition: 0.3s ease;
+}
+
+.edit-product-title {
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: 600;
+  color: #923c79;
+}
+
+.edit-product-label {
+  font-weight: 600;
+  color: rgb(171, 121, 244);
+}
+
+.edit-product-input,
+.edit-product-select {
+  border-radius: 14px;
+  border: 1px solid #e3c6ff;
+  background-color: #fdf7ff;
+  transition: all 0.2s ease;
+}
+
+.edit-product-input:focus,
+.edit-product-select:focus {
+  border-color: #c8b6ff;
+  box-shadow: 0 0 0 4px rgba(207, 178, 255, 0.3);
+  background-color: #fcfaff;
+}
+
+.edit-product-btn {
+  background-color: #923c79;
+  color: rgb(154, 255, 154);
+  border: none;
+  font-weight: 600;
+  border-radius: 14px;
+  transition: background-position 0.5s ease;
+}
+
+.edit-product-btn:hover {
+  background-color: rgba(154, 255, 154, 0.87);
+  color: #923c79;
+}
+
+.edit-product-img {
+  border-radius: 10px;
+  margin-bottom: 10px;
+  max-width: 100px;
+}
+
+/** end of edit-product css**/
+
+/** add-products.php **/
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+.add-product-body {
+  background-color: rgb(221, 220, 222);
+  font-family: 'Quicksand', sans-serif;
+  color: rgb(186, 255, 174);
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.add-product-card {
+  margin: 60px auto 20px auto;
+  max-width: 500px;
+}
+
+
+.add-product-card {
+  border-radius: 20px;
+  background-color: #fff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 600px;
+  padding: 30px;
+  border: 2px dashed #923c79;
+  transition: 0.3s ease;
+}
+
+.add-product-title {
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: 600;
+  color: #923c79;
+}
+
+.add-product-label {
+  font-weight: 600;
+  color: rgb(171, 121, 244);
+}
+
+.add-product-input,
+.add-product-select {
+  border-radius: 14px;
+  border: 1px solid #e3c6ff;
+  background-color: #fdf7ff;
+  transition: all 0.2s ease;
+}
+
+.add-product-input:focus,
+.add-product-select:focus {
+  border-color: #c8b6ff;
+  box-shadow: 0 0 0 4px rgba(207, 178, 255, 0.3);
+  background-color: #fcfaff;
+}
+
+.add-product-btn {
+  background-color: #923c79;
+  color: rgb(154, 255, 154);
+  border: none;
+  font-weight: 600;
+  border-radius: 14px;
+  transition: background-position 0.5s ease;
+}
+
+.add-product-btn:hover {
+  background-color: rgba(154, 255, 154, 0.87);
+  color: #923c79;
+}
+
+/** end of add-products.php **/
+
+/** dashboard.php **/
+.dashboard-body {
+    background-color: rgb(226, 223, 226); 
+    color: #923c79;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.dashboard-heading {
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #923c79;
+}
+
+.dashboard-btn {
+    border-radius: 20px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-success.dashboard-btn {
+    background-color: #c1f7d5;
+    color: #137547;
+    border: none;
+}
+
+.btn-success.dashboard-btn:hover {
+    background-color: #a8eac0;
+}
+
+.btn-primary.dashboard-btn {
+    background-color: rgb(177, 132, 254);
+    color: rgb(107, 60, 136);
+    border: none;
+}
+
+.btn-primary.dashboard-btn:hover {
+    background-color: #923c79;
+}
+
+.btn-warning {
+    background-color: #ffde7d;
+    border: none;
+    color: #7a5e00;
+}
+
+.btn-warning:hover {
+    background-color: #ffd45c;
+}
+
+.btn-danger {
+    background-color: #ffadad;
+    border: none;
+    color: #7a0000;
+}
+
+.btn-danger:hover {
+    background-color: #ff8b8b;
+}
+
+.dashboard-table {
+    margin: 0 auto;
+    width: 90%;
+    background-color: #fff0fb;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 12px rgba(144, 64, 124, 0.2);
+}
+
+.dashboard-table th {
+    background-color: #923c79 !important;
+    color: #f7d3ed !important;
+}
+
+.dashboard-table td,
+.dashboard-table th {
+    text-align: center;
+    vertical-align: middle;
+    padding: 16px;
+}
+
+.dashboard-img {
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+/**end of dashboard.php **/
+
+/** login.php **/
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+.login-body {
+  background-color: rgb(221, 220, 222);
+  font-family: 'Quicksand', sans-serif;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.login-form-container {
+  width: 100%;
+  max-width: 500px;
+  background-color: #fff;
+  border: 2px dashed #923c79;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.login-form-container {
+  margin: 60px auto 20px auto;
+  max-width: 500px;
+}
+
+.login-icons-container {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+
+.login-title {
+  font-size: 26px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 600;
+  color: #923c79;
+}
+
+.login-label {
+  font-weight: 600;
+  color: rgb(171, 121, 244);
+}
+
+.login-input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 5px;
+  border: 1px solid #e3c6ff;
+  border-radius: 14px;
+  background-color: #fdf7ff;
+}
+
+.login-input:focus {
+  border-color: #c8b6ff;
+  box-shadow: 0 0 0 4px rgba(207, 178, 255, 0.3);
+}
+
+.login-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: #923c79;
+  border: none;
+  border-radius: 14px;
+  color: rgb(154, 255, 154);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.login-btn:hover {
+  background-color: rgba(154, 255, 154, 0.87);
+  color: #923c79;
+}
+
+.login-error-msg {
+  color: rgb(255, 48, 65);
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  text-align: center;
+}
+
+.login-register-link {
+  text-decoration: none;
+  color: #923c79;
+  font-style: italic;
+  font-weight: bolder;
+}
+
+.login-register-link:hover {
+  color: rgb(154, 255, 154);
+  text-decoration: underline;
+}
+
+.login-icons-container {
+  text-align: center;
+  padding: 20px 10px;
+  color: #923c79;
+}
+
+.login-social-icons a {
+  color: #923c79;
+  margin: 0 20px;
+  font-size: 1.6rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.login-social-icons a:hover {
+  color: rgb(132, 250, 132);
+  transform: scale(1.2);
+}
+
+.tag:hover {
+  transform: scale(1.3);
+}
+
+/** end of login.php **/
