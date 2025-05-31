@@ -1,5 +1,7 @@
 <?php
+include 'includes/header.php';
 include 'database/db.php';
+$base_path = ''; 
 
 ?>
 
@@ -17,3 +19,5 @@ include 'database/db.php';
     <?php } ?>
 <br>
 <a href="store.php">View our store</a>
+
+<?php include 'includes/footer.php'; ?>

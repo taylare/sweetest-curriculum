@@ -1,6 +1,7 @@
 <?php
-
-    include('../database/db.php');
+    $base_path = "../";
+    include "../includes/header.php";
+    include "../database/db.php";
 
     if (!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] != 1){
         header("Location: ../login.php");
