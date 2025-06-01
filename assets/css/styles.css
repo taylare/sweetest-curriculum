@@ -482,3 +482,15 @@ footer {
 }
 
 /** end of login.php **/
+
+/** cart.php page **/
+
+.btn-update {
+  color: #ec80ff;
+  background-color:#913C79;
+}
+
+.btn-update:hover {
+  color: #ec80ff;
+  background-color:#773163;
+}

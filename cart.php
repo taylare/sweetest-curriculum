@@ -1,5 +1,4 @@
 <?php 
-// include the header and database connection
 include 'includes/header.php';
 include 'database/db.php';
 
@@ -58,20 +57,20 @@ if ($result) {
                 <tr>
                     <td><?= htmlspecialchars($item['productName']) ?></td>
                     <td>
-                        <form action="update_cart.php" method="post" class="d-flex">
+                        <form action="update-cart.php" method="post" class="d-flex">
                             <!-- hidden field to send product id -->
                             <input type="hidden" name="product_id" value="<?= $item['product_id'] ?>">
                             <!-- quantity input -->
                             <input type="number" name="quantity" value="<?= $item['quantity'] ?>" min="1" class="form-control w-50 me-2">
                             <!-- update button -->
-                            <button class="btn btn-sm btn-primary" type="submit">update</button>
-                        </form>
+                            <button class="btn btn-sm btn-update" type="submit">update</button>
+</form>
                     </td>
                     <td>$<?= number_format($item['price'], 2) ?></td>
                     <td>$<?= number_format($subtotal, 2) ?></td>
                     <td>
                         <!-- link to remove the item -->
-                        <a href="delete_cart_item.php?product_id=<?= $item['product_id'] ?>" class="btn btn-sm btn-danger">remove</a>
+                        <a href="delete-cart-item.php?product_id=<?= $item['product_id'] ?>" class="btn btn-sm btn-danger">remove</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
