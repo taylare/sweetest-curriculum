@@ -182,7 +182,7 @@ INSERT INTO Product_Category (product_id, category_id) VALUES
 
 
 
--- CART (user_id = 5)
+-- CART (user_id = 2)
 INSERT INTO cart (user_id, product_id, quantity) VALUES
 (2, 1, 2),
 (2, 3, 1);

@@ -64,7 +64,7 @@ if ($result) {
                             <input type="number" name="quantity" value="<?= $item['quantity'] ?>" min="1" class="form-control w-50 me-2">
                             <!-- update button -->
                             <button class="btn btn-sm btn-update" type="submit">update</button>
-</form>
+                        </form>
                     </td>
                     <td>$<?= number_format($item['price'], 2) ?></td>
                     <td>$<?= number_format($subtotal, 2) ?></td>
@@ -76,8 +76,20 @@ if ($result) {
             <?php endforeach; ?>
         </tbody>
     </table>
-    <h4>total: $<?= number_format($total, 2) ?></h4>
-    <a href="order.php" class="btn btn-success">proceed to checkout</a>
-<?php endif; ?>
+    <?php
+        $total_quantity = 0;
+        foreach ($cart_items as $item) {
+            $total_quantity += $item['quantity'];
+        }
+    ?>
 
-<?php include 'includes/footer.php'; ?>
+    <h4>total: $<?= number_format($total, 2) ?></h4>
+
+    <?php if ($total_quantity >= 10): ?>
+        <a href="order.php" class="btn btn-success">proceed to checkout</a>
+        <?php else: ?>
+            <p style="color: green;">you need to order at least 10 macarons to checkout.</p>
+        <?php endif; ?>
+    <?php endif; ?>
+
+    <?php include 'includes/footer.php'; ?>
