@@ -1,3 +1,7 @@
+/************************/
+/****** MAIN PAGE *******/
+/************************/
+
 .nav-link {
     margin-left: 1em;
 }
@@ -69,11 +73,6 @@ body.index-body {
 }
 
 
-
-
-
-
-
 #connect {
     margin: 0;
 }
@@ -113,8 +112,9 @@ footer {
 }
 
 
-
-/**edit-products page css**/
+/********************************/
+/******edit-products.php page********/
+/*******************************/
 
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
 
@@ -191,9 +191,11 @@ footer {
   max-width: 100px;
 }
 
-/** end of edit-product css**/
+/** end of edit-product **/
 
-/** add-products.php **/
+/*******************************/
+/*******add-products.php*******/
+/******************************/
 
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
 
@@ -267,7 +269,9 @@ footer {
 
 /** end of add-products.php **/
 
-/** dashboard.php **/
+/*******************************/
+/*********dashboard.php********/
+/*******************************/
 .dashboard-body {
     background-color: rgb(226, 223, 226); 
     color: #923c79;
@@ -352,7 +356,10 @@ footer {
 
 /**end of dashboard.php **/
 
-/** login.php **/
+
+/**************************************/
+/************login.php****************/
+/*************************************/
 
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
 
@@ -474,7 +481,10 @@ footer {
 
 /** end of login.php **/
 
-/** cart.php page **/
+
+/*********************************/
+/************cart.php************/
+/********************************/
 
 .btn-update {
   color: #ec80ff;
@@ -486,7 +496,11 @@ footer {
   background-color:#773163;
 }
 
-/** store.php page styling **/
+
+/** end of cart page **/
+/*********************************/
+/*************store.php***********/
+/********************************/
 
 /* whole page background and base font */
 .product-page-body {
@@ -521,7 +535,7 @@ footer {
   color: #c75d77;
 }
 
-/* 🧵 Filter button (before hover) */
+/* filter button (before hover) */
 .product-page-btn {
   background-color: #f5a3b0;
   color: white;
@@ -532,13 +546,13 @@ footer {
   transition: background-color 0.3s; /* smooth fade */
 }
 
-/* Filter button on hover */
+/* filter button on hover */
 .product-page-btn:hover {
   background-color: #a6c4f2; /* soft blue when hovered */
 }
 
 
-/* Product card container */
+/* product card container */
 .product-card {
   border-radius: 20px;
   background-color: rgb(246, 222, 255); /* soft lavender */
@@ -547,12 +561,12 @@ footer {
   transition: transform 0.3s ease; /* allows hover bounce */
 }
 
-/* Slight bounce effect when hovering card */
+/* slight bounce effect when hovering card */
 .product-card:hover {
   transform: scale(1.03);
 }
 
-/* Image at top of card */
+/* image at top of card */
 .product-card-img {
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
@@ -561,21 +575,21 @@ footer {
   object-fit: contain; /* keeps image from stretching */
 }
 
-/* Product name */
+/* product name */
 .product-card-title {
   color: #913C79;
   font-weight: 600;
   font-size: 1.2rem;
 }
 
-/* Price display */
+/* price display */
 .product-card-text {
   color: #913C79;
   font-size: 1.1rem;
   font-weight: bold;
 }
 
-/* Product description */
+/* product description */
 .product-card-desc {
   font-size: 0.9rem;
   color: #913C79;
@@ -605,7 +619,7 @@ footer {
 
 /* sparkle animation attached to Add to Cart button */
 .add-to-cart-btn::after {
-  content: "✨";  /* adds sparkle emoji */
+  content: "✨";  
   position: absolute; /* positions sparkle relative to button */
   top: -8px;
   right: -10px;
@@ -698,3 +712,5 @@ footer {
   background-color: #c8b6ff;
   color: #fff;
 }
+
+/**end of store page**/
