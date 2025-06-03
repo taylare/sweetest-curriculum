@@ -20,10 +20,6 @@ body.index-body {
     height: 100vh;
 }
 
-.container {
-    background-color: #FCF3FF;
-    height: 100vh;
-}
 
 #navbar_brand {
     justify-content: center;
@@ -108,7 +104,6 @@ footer {
     padding: 5%;
     background-color: #913C79;
     text-align: center;
-    margin-top: 5%;
 }
 
 @media (min-width: 992px) {
@@ -489,4 +484,217 @@ footer {
 .btn-update:hover {
   color: #ec80ff;
   background-color:#773163;
+}
+
+/** store.php page styling **/
+
+/* whole page background and base font */
+.product-page-body {
+  background-color: #e3c6ff; /* light purple background */
+  padding: 2rem;
+  font-family: 'Quicksand', sans-serif;
+  color: #913C79; /* dark purple text */
+}
+
+/* page heading */
+.product-page-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #913C79;
+}
+
+/* label text for filter dropdown */
+.product-page-label {
+  font-weight: 600;
+  color: #913C79;
+}
+
+/* category filter dropdown box */
+.product-page-select {
+  width: 200px;
+  border-radius: 12px;
+  border: 1px solid #fcefd9;
+  background-color: #fdf7ff;
+  padding: 0.4rem 0.7rem;
+  color: #c75d77;
+}
+
+/* 🧵 Filter button (before hover) */
+.product-page-btn {
+  background-color: #f5a3b0;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  padding: 0.4rem 1rem;
+  transition: background-color 0.3s; /* smooth fade */
+}
+
+/* Filter button on hover */
+.product-page-btn:hover {
+  background-color: #a6c4f2; /* soft blue when hovered */
+}
+
+
+/* Product card container */
+.product-card {
+  border-radius: 20px;
+  background-color: rgb(246, 222, 255); /* soft lavender */
+  border: 2px solid #913C79;
+  box-shadow: 0 4px 15px rgba(255, 182, 193, 0.2); /* subtle pink shadow */
+  transition: transform 0.3s ease; /* allows hover bounce */
+}
+
+/* Slight bounce effect when hovering card */
+.product-card:hover {
+  transform: scale(1.03);
+}
+
+/* Image at top of card */
+.product-card-img {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding: 1rem;
+  height: 180px;
+  object-fit: contain; /* keeps image from stretching */
+}
+
+/* Product name */
+.product-card-title {
+  color: #913C79;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+/* Price display */
+.product-card-text {
+  color: #913C79;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+/* Product description */
+.product-card-desc {
+  font-size: 0.9rem;
+  color: #913C79;
+  margin-bottom: 1rem;
+}
+
+/* cute handwritten-style font*/
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
+
+/* styling for both buttons */
+.add-to-cart-btn,
+.view-product-btn {
+  font-family: 'Baloo 2', cursive; 
+  font-size: 0.95rem;
+  padding: 0.4rem 1.1rem;
+  border: 2px solid #fff6f8;
+  border-radius: 8px; 
+  cursor: pointer;
+  background-color: transparent;
+  background-size: 100% 100%;
+  text-shadow: 0.5px 0.5px #fff; /* subtle outline */
+  position: relative;
+  transition: transform 0.2s ease-in-out, filter 0.2s; /* transition when the button changes its size (transform) or brightness (filter) on hover.
+   - 'transform 0.2s ease-in-out' means it will scale up/down smoothly over 0.2 seconds.
+   - 'filter 0.2s' means the brightness will also change smoothly in the same time. */
+}
+
+/* sparkle animation attached to Add to Cart button */
+.add-to-cart-btn::after {
+  content: "✨";  /* adds sparkle emoji */
+  position: absolute; /* positions sparkle relative to button */
+  top: -8px;
+  right: -10px;
+  animation: sparkle 1.8s infinite ease-in-out; /* loop animation forever */
+  font-size: 1.0rem;
+}
+
+/* keyframe animation that makes the sparkle twinkle */
+@keyframes sparkle {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: rotate(12deg) scale(1.3); /* slightly rotate & grow */
+    opacity: 0.8;
+  }
+}
+
+.add-to-cart-btn {
+  border: 2px solid #e68aff;
+  color: #913C79;
+  background: linear-gradient(145deg, #f4aeff, #ef8bff); 
+}
+
+.view-product-btn {
+  border: 2px solid #81cd89;
+  color: #69a56f;
+  background: linear-gradient(145deg, #a9ffb6, #bcffc9);
+}
+
+/* button hover effects (slight bounce and glow) */
+.add-to-cart-btn:hover,
+.view-product-btn:hover {
+  transform: scale(1.05); /* subtle zoom effect */
+  filter: brightness(1.08); /* makes button look lighter */
+}
+
+/* category filter form layout: */
+.product-page-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;        /* center horizontally */
+  align-items: center;            /* center vertically */
+  gap: 1rem;                      /* space between elements */
+  margin: 2rem auto;
+  max-width: 600px;
+  background-color: #fdf7ff;
+  border: 2px dashed #c8b6ff;  
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 18px rgba(146, 60, 121, 0.08); 
+}
+
+/* label text inside the form */
+.product-page-label {
+  font-weight: bold;
+  color: #923c79;
+  font-family: 'Quicksand', sans-serif;
+  margin-right: 0.5rem;
+}
+
+/* dropdown box inside the form */
+.product-page-select {
+  border-radius: 12px;
+  border: 1px solid #c8b6ff;
+  padding: 0.4rem 0.7rem;
+  font-family: 'Quicksand', sans-serif;
+  background-color: #fff;
+  color: #923c79;
+}
+
+.product-page-select:focus {
+  border-color: #c8b6ff;
+  box-shadow: 0 0 0 4px rgba(207, 178, 255, 0.3);
+}
+
+/* filter button inside the form */
+.product-page-btn {
+  background-color: rgb(154, 255, 154); 
+  color: #923c79;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  padding: 0.4rem 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.product-page-btn:hover {
+  background-color: #c8b6ff;
+  color: #fff;
 }
