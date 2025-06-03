@@ -61,9 +61,7 @@
         <ul class="navbar-nav">
             <li class="nav-item"><a class="nav-link" href="<?= $base_path ?>index.php">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="<?= $base_path ?>store.php">Shop</a></li>
-          <li class="nav-item"><a class="nav-link" href="<?= $base_path ?>flavors.php">Flavors</a></li>
-          <li class="nav-item"><a class="nav-link" href="<?= $base_path ?>about.php">About Us</a></li>
-          <li class="nav-item"><a class="nav-link" href="<?= $base_path ?>contact.php">Contact</a></li>
+
           <?php if(isset($_SESSION['logged-in']) && $_SESSION['logged-in']): ?>
             <?php if (!empty($_SESSION['isAdmin'])): ?>
               <li class="nav-item"><a class="nav-link" href="<?= $base_path ?>admin/dashboard.php">Admin</a></li>
