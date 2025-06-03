@@ -1,4 +1,23 @@
 /************************/
+/****** VARIABLES *******/
+/************************/
+:root {
+	--magnolia: #FCF3FF; 
+	--roseQuartz: #B09CB7; 
+	--lavendarBlush: #FFF2F2; 
+	--powderBlue: #A0B6DE;
+  --plum: #CFFFD0;
+  --teaGreen: #913C79;
+}
+
+/* EXAMPLE OF HOW TO USE VARIABLES */
+/* ******************************** /
+/* backgroud: var(--magnolia);
+/* ******************************* /
+
+
+
+/************************/
 /****** MAIN PAGE *******/
 /************************/
 
