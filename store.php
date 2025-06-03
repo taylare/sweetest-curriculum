@@ -120,13 +120,13 @@ if ($product_result) {
   <div class="toast show custom-toast" role="alert">
     <div class="d-flex">
       <div class="toast-body">
-        <?= $_SESSION['flash'] ?> <!-- display the message from the session -->
+        <?= $_SESSION['store-flash'] ?> <!-- display the message from the session -->
       </div>
       <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
   </div>
 </div>
-<?php unset($_SESSION['flash']); ?> <!-- Remove the message so it doesn't repeat -->
+<?php unset($_SESSION['store-flash']); ?> <!-- Remove the message so it doesn't repeat -->
 <?php endif; ?>
 
 <?php include 'includes/footer.php'; ?> 
