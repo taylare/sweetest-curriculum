@@ -115,7 +115,7 @@ if ($product_result) {
 </div>
 
 <!-- toast notification for flash messages (like "added to cart") -->
-<?php if (!empty($_SESSION['flash'])): ?>
+<?php if (!empty($_SESSION['store-flash'])): ?>
 <div aria-live="polite" aria-atomic="true" class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999;">
   <div class="toast show custom-toast" role="alert">
     <div class="d-flex">
