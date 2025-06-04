@@ -101,7 +101,7 @@ INSERT INTO users (username, userEmail, isAdmin, userPassword) VALUES
 
 #--PRODUCTS & CATEGORIES:
 -- Insert Categories
-INSERT INTO Categories (category_id, category_name) VALUES
+INSERT INTO categories (category_id, category_name) VALUES
 (1, 'Professor’s Picks'),         -- Signature & refined flavours, like top-tier projects or capstones  
 (2, 'The Honour Roll'),           -- Bestsellers & student favourites — reliable crowd-pleasers  
 (3, 'Study Snacks'),              -- Comfort flavours for late-night cramming & chill coding  
@@ -112,7 +112,7 @@ INSERT INTO Categories (category_id, category_name) VALUES
 (8, 'Math');                      -- Evil flavours
 
 -- Insert Products
-INSERT INTO Products (product_id, productName, price, imageURL, description) VALUES
+INSERT INTO products (product_id, productName, price, imageURL, description) VALUES
 (1, 'Vanilla Terminal', 3.50, 'vanilla-terminal.png', 'Classic vanilla bean macaron with silky custard filling.'),
 (2, 'Blueberry Canvas', 3.50, 'blueberry-canvas.png', 'Blueberry and white chocolate macaron inspired by ART 135: Digital Design Foundations.'),
 (3, 'Choco Logic', 3.50, 'choco-logic.png', 'Rich dark chocolate with espresso – perfect fuel for ICS 114: Algorithms and Programming.'),
@@ -155,7 +155,7 @@ INSERT INTO Products (product_id, productName, price, imageURL, description) VAL
 (40, 'Espresso Exception', 3.50, 'espresso-exception.png', 'Dark espresso core for surviving runtime errors and late-night builds.');
 
 -- Product_Category
-INSERT INTO Product_Category (product_id, category_id) VALUES
+INSERT INTO product_category (product_id, category_id) VALUES
 -- Professor’s Picks
 (1, 1), (9, 1), (17, 1), (25, 1), (29, 1), (33, 1),
 
