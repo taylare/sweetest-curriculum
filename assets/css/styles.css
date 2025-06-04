@@ -997,6 +997,7 @@ body.cart-body {
 /*********************************/
 /*************item-view.php***********/
 /********************************/
+/* Styles for the body of the item view page */
 #item-view-body {
   background-color: var(--lavendarBlush);
   width: 100%;
@@ -1005,7 +1006,7 @@ body.cart-body {
   padding: 0;
   margin: 0;
 }
-
+/* Contains information about the product itself, and the add to cart button */
 #item-view-info-container {
   display: flex;
   flex-direction: row;
@@ -1013,23 +1014,61 @@ body.cart-body {
   height: 100vh;
   box-sizing: border-box;
   padding: 5px;
+  margin-top: 5%;
 }
 
+/* Contains name of the product and the image */
 #product-image-and-title {
   display: flex;
   flex-direction: column;
+  width: 50%;
+  height: fit-content;
   box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
 }
 
-#item-view-product-img-container {
-
+/* The container for the product name located above the image */
+#product-title {
+  display: flex;
+  width: 50%;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
 }
 
+/* Container that creates a border around the product's image */
 #item-view-product-img-container {
-  display: none;
-  height: 250px;
-  width: 250px;
+  display: flex;
+  border: solid var(--roseQuartz) 4px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  width: 50%;
+  height: 20%;
+}
+
+/* image of the product the user is viewing */
+#item-view-product-img {
+  display: flex;
+  width: 100%;
+  height: 100%;
   aspect-ratio: 1 / 1;
 }
+
+/* container for the review as well as the description of the product */
+
+#rating-and-description-container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+#product-view-rating {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+}
+
 /**end of item view**/
 /**end of store page**/
