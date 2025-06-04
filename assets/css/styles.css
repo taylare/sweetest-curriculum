@@ -130,6 +130,88 @@ footer {
     }
 }
 
+/**navbar & header responsive for desktop**/
+@media (min-width: 992px) {
+  .navbar {
+    padding: 1rem 2rem;
+  }
+
+  .navbar .container-fluid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .navbar .btn-primary:first-of-type { /* - pseudo-class that selects the first element of its type within its parent.*/
+    order: 3; /* cart icon on far right */
+  }
+
+  .navbar .btn-primary:last-of-type {
+    display: none; /* hide hamburger on large screen */
+  }
+
+  .offcanvas {
+    display: none !important; 
+  }
+
+  .navbar-nav {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+
+  .nav-link {
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--teaGreen);
+  }
+}
+
+/* Spacing for nav buttons on mobile */
+.navbar .btn-primary {
+  padding: 0.3rem 0.6rem;
+  font-size: 1.2rem;
+}
+
+/* Better logo scaling */
+.logo {
+  height: 32px;
+  width: 32px;
+}
+
+/* Brand text styling */
+.text_brand {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--teaGreen);
+  text-shadow: 1px 1px black;
+}
+
+/* Offcanvas nav spacing */
+.offcanvas-body .navbar-nav {
+  gap: 0.8rem;
+}
+
+/* Nav link spacing */
+.nav-link {
+  margin-left: 0 !important;
+}
+
+/* Make nav bar gently rounded */
+.navbar {
+  box-shadow: 0 3px 8px var(--powderBlue);
+}
+
+
+
 
 /********************************/
 /******edit-products.php page********/
@@ -241,7 +323,7 @@ footer {
   width: 100%;
   max-width: 600px;
   padding: 30px;
-  border: 2px dashed #923c79;
+  border: 2px dashed var(--plum);
   transition: 0.3s ease;
 }
 
@@ -249,7 +331,7 @@ footer {
   text-align: center;
   margin-bottom: 25px;
   font-weight: 600;
-  color: #923c79;
+  color: var(--plum);
 }
 
 .add-product-label {
@@ -273,7 +355,7 @@ footer {
 }
 
 .add-product-btn {
-  background-color: #923c79;
+  background-color: var(--plum);
   color: rgb(154, 255, 154);
   border: none;
   font-weight: 600;
@@ -283,7 +365,7 @@ footer {
 
 .add-product-btn:hover {
   background-color: rgba(154, 255, 154, 0.87);
-  color: #923c79;
+  color: var(--plum);
 }
 
 /** end of add-products.php **/
@@ -327,7 +409,7 @@ footer {
 }
 
 .btn-primary.dashboard-btn:hover {
-    background-color: #923c79;
+    background-color: var(--plum);;
 }
 
 .btn-warning {
@@ -362,7 +444,7 @@ footer {
 }
 
 .dashboard-table th {
-    background-color: #923c79 !important;
+    background-color: var(--plum) !important;
     color: #f7d3ed !important;
 }
 
@@ -396,7 +478,7 @@ footer {
   width: 100%;
   max-width: 500px;
   background-color: #fff;
-  border: 2px dashed #923c79;
+  border: 2px dashed var(--plum);
   border-radius: 20px;
   padding: 30px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
@@ -418,7 +500,7 @@ footer {
   margin-bottom: 20px;
   text-align: center;
   font-weight: 600;
-  color: #923c79;
+  color: var(--plum);
 }
 
 .login-label {
@@ -430,30 +512,30 @@ footer {
   width: 100%;
   padding: 12px;
   margin-bottom: 5px;
-  border: 1px solid #e3c6ff;
+  border: 1px solid var(--powderBlue);
   border-radius: 14px;
   background-color: #fdf7ff;
 }
 
 .login-input:focus {
-  border-color: #c8b6ff;
+  border-color: var(--powderBlue);
   box-shadow: 0 0 0 4px rgba(207, 178, 255, 0.3);
 }
 
 .login-btn {
   width: 100%;
   padding: 14px;
-  background-color: #923c79;
+  background-color: var(--plum);
   border: none;
   border-radius: 14px;
-  color: rgb(154, 255, 154);
+  color: var(--plum);
   font-weight: 600;
   text-transform: uppercase;
 }
 
 .login-btn:hover {
-  background-color: rgba(154, 255, 154, 0.87);
-  color: #923c79;
+  background-color: var(--teaGreen);
+  color: var(--plum);
 }
 
 .login-error-msg {
@@ -466,31 +548,31 @@ footer {
 
 .login-register-link {
   text-decoration: none;
-  color: #923c79;
+  color: var(--plum);
   font-style: italic;
   font-weight: bolder;
 }
 
 .login-register-link:hover {
-  color: rgb(154, 255, 154);
+  color: var(--teaGreen);
   text-decoration: underline;
 }
 
 .login-icons-container {
   text-align: center;
   padding: 20px 10px;
-  color: #923c79;
+  color: var(--plum);
 }
 
 .login-social-icons a {
-  color: #923c79;
+  color: var(--plum);
   margin: 0 20px;
   font-size: 1.6rem;
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .login-social-icons a:hover {
-  color: rgb(132, 250, 132);
+  color: var(--teaGreen);
   transform: scale(1.2);
 }
 
@@ -508,7 +590,6 @@ body.cart-body {
   background: var(--magnolia);
   font-family: 'Segoe UI', sans-serif;
   color: var(--plum);
-  padding-bottom: 50px;
 }
 
 /* Cart title */
@@ -745,14 +826,13 @@ body.cart-body {
   background-color: var(--powderBlue);
 }
 
-
 /* product card container */
 .product-card {
   border-radius: 20px;
   background-color: var(--lavendarBlush); 
   border: 4px solid var(--teaGreen);
-  box-shadow: 0 4px 15px rgba(255, 182, 193, 0.2); /* subtle pink shadow */
-  transition: transform 0.3s ease; /* allows hover bounce */
+  box-shadow: 0 4px 15px rgba(255, 182, 193, 0.2); 
+  transition: transform 0.3s ease; 
 }
 
 /* slight bounce effect when hovering card */
@@ -762,14 +842,14 @@ body.cart-body {
 
 /* image at top of card */
 .product-card-img {
-  border-radius: 50%; /* makes the image a circle */
-  border: 4px dashed var(--powderBlue); /* cute dashed border */
+  border-radius: 50%;
+  border: 3px dashed var(--powderBlue); 
   width: 160px;
   height: 160px;
-  object-fit: cover; /* ensure image fills circle without distortion */
+  object-fit: cover; 
   display: block;
-  margin: 1rem auto 1rem; /* center image and add spacing below */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* optional soft shadow */
+  margin: 1rem auto 1rem; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); 
 }
 
 
@@ -808,7 +888,7 @@ body.cart-body {
   cursor: pointer;
   background-color: transparent;
   background-size: 100% 100%;
-  text-shadow: 0.5px 0.5px #fff; /* subtle outline */
+  text-shadow: 0.5px 0.5px #fff; 
   position: relative;
   transition: transform 0.2s ease-in-out, filter 0.2s; /* transition when the button changes its size (transform) or brightness (filter) on hover.
    - 'transform 0.2s ease-in-out' means it will scale up/down smoothly over 0.2 seconds.
@@ -827,7 +907,7 @@ body.cart-body {
 
 /* keyframe animation that makes the sparkle twinkle */
 @keyframes sparkle {
-  0%, 100% {
+  0%, 100% { /* 0, 100 = start, end*/
     transform: rotate(0deg) scale(1);
     opacity: 1;
   }
@@ -862,7 +942,7 @@ body.cart-body {
   flex-wrap: wrap;
   justify-content: center;        /* center horizontally */
   align-items: center;            /* center vertically */
-  gap: 1rem;                      /* space between elements */
+  gap: 1rem;                     
   margin: 2rem auto;
   max-width: 600px;
   background-color: var(--lavendarBlush);

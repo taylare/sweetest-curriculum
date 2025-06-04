@@ -104,17 +104,13 @@ while ($row = mysqli_fetch_assoc($result)) {
           // we want to show a total of 10 macarons in the bar
           // some will be full-color (to show how many items are in the cart)
           // and the rest will be faded/empty (to show how many more the user needs)
-
-          // limit the full macarons to 10 max (just for display purposes)
-          // so if the user has more than 10 items, we still only show 10 full ones
           $filled = min($total_quantity, 10);
 
           // calculate how many empty faded macarons to show
-          // for example: if the user has 6 items, we’ll show 4 empty ones
+          // eg: if the user has 6 items, we’ll show 4 empty ones
           $empty = 10 - $filled;
 
-          // this array holds different colored macaron image filenames
-          // make sure these image files exist in your assets/images folder
+          // array of macaron colours
           $macaron_colors = [
             'macaron-magenta.png',
             'macaron-blue.png',
@@ -125,21 +121,19 @@ while ($row = mysqli_fetch_assoc($result)) {
           // loop through the number of full macarons we want to show
           for ($i = 0; $i < $filled; $i++) {
             // pick a color by cycling through the color list using modulo (%)
-            // this means if we run out of colors, it starts from the beginning again
+            // this means if we run out of colors, itll start from the beginning again
             $color = $macaron_colors[$i % count($macaron_colors)];
 
-            // display the full-colored macaron image
+            // display the full-coloured macaron image
             echo "<img src='assets/images/$color' style='width:40px; margin:2px;' alt='macaron'>";
           }
 
-          // now we show the empty (faded) macarons for the remaining spots
-          // for example: if $empty is 3, this shows 3 faded macarons
+          // now we show the empty/faded macarons for the remaining spots
+          // eg: if $empty is 3, this shows 3 faded macarons - repeat $empty_macaron image $empty amount of times
           $empty_macaron = "<img src='assets/images/macaron-sad.png' style='width:40px; margin:2px; opacity: 0.4;' alt='empty'>";
           echo str_repeat($empty_macaron, $empty);
         ?>
       </div>
-
-
 
 
       <!-- total and checkout area -->
