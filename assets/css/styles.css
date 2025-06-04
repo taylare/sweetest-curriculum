@@ -11,15 +11,16 @@
 }
 
 /* EXAMPLE OF HOW TO USE VARIABLES */
-/* ******************************** /
-/* backgroud: var(--magnolia);
-/* ******************************* /
+/* ******************************* */
+/* backgroud: var(--magnolia);     */
+/* ******************************* */
 
-
+html { scroll-behavior: smooth; } /* allows for smooth scrolling through web page */
 
 /************************/
 /****** MAIN PAGE *******/
 /************************/
+
 
 .nav-link {
     margin-left: 1em;
