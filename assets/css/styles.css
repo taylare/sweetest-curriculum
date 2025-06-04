@@ -883,8 +883,38 @@ body.cart-body {
 /*********************************/
 /*************item-view.php***********/
 /********************************/
+#item-view-body {
+  background-color: var(--lavendarBlush);
+  width: 100%;
+  font-weight: normal;
+  font-style: normal;
+  padding: 0;
+  margin: 0;
+}
 
+#item-view-info-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 5px;
+}
 
+#product-image-and-title {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
 
+#item-view-product-img-container {
 
+}
+
+#item-view-product-img-container {
+  display: none;
+  height: 250px;
+  width: 250px;
+  aspect-ratio: 1 / 1;
+}
 /**end of item view**/
