@@ -14,19 +14,28 @@
         </header>
 
         <!-- Top container for the product title, image, rating, and description -->
-        <div id="item-view-info-container" class="">
-            <div id="product-image-and-title" class="">
+        <div id="item-view-info-container">
+            <div id="product-image-and-title">
                 <div id="product-title"> 
-                    <h3> Product Name Here </h3>
+                    <h3> Cool Product </h3>
                 </div>
-                <div id="item-view-product-img-container" class="">
+                <div id="item-view-product-img-container">
                     <img id="item-view-product-img" src="assets/images/macaron-filler-image.jpg">
+                </div>
+            </div>
+            <div id="rating-and-description-container">
+                <div id="product-view-rating">
+                    <h2> 5/5 </h2>
+                </div>
+                    <div id="product-view-description">
+                        <p> This is a totally sick description about this really sick macaron that you should buy because it's super tasty mmmm yum </p>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Carousel containing other recommended products of the same category -->
-        <div id="item-view-recommended-container" class="">
+        <div id="item-view-recommended-container">
 
         </div>
 
