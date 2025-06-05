@@ -1043,8 +1043,8 @@ body.cart-body {
   border: solid var(--roseQuartz) 4px;
   border-radius: 5px;
   box-sizing: border-box;
-  width: 50%;
-  height: 20%;
+  width: 100%;
+  height: 100%;
 }
 
 /* image of the product the user is viewing */
@@ -1070,5 +1070,16 @@ body.cart-body {
   justify-content: center;
 }
 
+#product-view-description {
+  display: flex;
+  text-align: left;
+  font-size: 1.2rem;
+  margin-top: 5%;
+}
+
+.fa-star {
+  color: goldenrod;
+  text-shadow: 2px 2px 4px #000000; 
+}
 /**end of item view**/
-/**end of store page**/
+
