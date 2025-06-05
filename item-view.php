@@ -40,25 +40,27 @@
                             #  3) if the internal counter isn't the same value as the rating, create a golden star
                             #  4) if the internal counter is complete but the external one is still going, create a gray star  
                             while ($i < 5) {
-                                echo "<i class=\"fa-solid fa-star\"></i>";
+                                echo "<i class=\"fa-solid fa-star review-star\"></i>";
                                 $i++;
                             }
                         ?>
                         </h2>
-                        
                 </div>
-                    <div id="product-view-description">
-                        <p> This is a totally sick description about this really sick macaron that you should buy because it's super tasty mmmm yum </p>
-                    </div>
+                <div id="product-view-description">
+                    <p> This is a totally sick description about this really sick macaron that you should buy because it's super tasty mmmm yum </p>
                 </div>
+                <button id="add-to-cart-button-store-view" class="btn"> <i class="fa-solid fa-cart-plus"></i> Add </button>
             </div>
+        </div>
+        <div class="divider-container">
+            <div class="divider-line"> <i class="fa-solid fa-star divider-star"></i> </div>
         </div>
 
         <!-- Carousel containing other recommended products of the same category -->
         <div id="item-view-recommended-container">
 
         </div>
-
+        
 
         <footer>
             <?php include 'includes/footer.php'; ?>

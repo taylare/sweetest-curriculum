@@ -8,6 +8,7 @@
 	--powderBlue: #A0B6DE;
   --plum: #913C79;
   --teaGreen: #bcffbd;
+  --lilac: #ead4ff;
 }
 
 /* EXAMPLE OF HOW TO USE VARIABLES */
@@ -997,24 +998,30 @@ body.cart-body {
 /*********************************/
 /*************item-view.php***********/
 /********************************/
+
+/*=================*/
+/*      MOBILE     */
+/*=================*/
+
 /* Styles for the body of the item view page */
 #item-view-body {
-  background-color: var(--lavendarBlush);
+  background-color: var(--);
   width: 100%;
   font-weight: normal;
   font-style: normal;
   padding: 0;
   margin: 0;
+  color: var(--roseQuartz);
 }
 /* Contains information about the product itself, and the add to cart button */
 #item-view-info-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 100%;
-  height: 100vh;
   box-sizing: border-box;
   padding: 5px;
   margin-top: 5%;
+  align-items: center;
 }
 
 /* Contains name of the product and the image */
@@ -1035,6 +1042,7 @@ body.cart-body {
   justify-content: center;
   justify-items: center;
   text-align: center;
+  font-weight: bold;
 }
 
 /* Container that creates a border around the product's image */
@@ -1043,8 +1051,8 @@ body.cart-body {
   border: solid var(--roseQuartz) 4px;
   border-radius: 5px;
   box-sizing: border-box;
-  width: 100%;
-  height: 100%;
+  width: 95%;
+  height: 95%;
 }
 
 /* image of the product the user is viewing */
@@ -1060,7 +1068,9 @@ body.cart-body {
 #rating-and-description-container {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 100%;
+  padding: 0px 10px 0px 10px;
+  align-items: center;
 }
 
 #product-view-rating {
@@ -1077,9 +1087,53 @@ body.cart-body {
   margin-top: 5%;
 }
 
-.fa-star {
+.review-star {
   color: goldenrod;
-  text-shadow: 2px 2px 4px #000000; 
+  text-shadow: 5px 5px 10px #000000; 
 }
+
+.divider-container {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0 40px 0;
+}
+
+.divider-line {
+  width:40%; 
+  height:2px; 
+  background: var(--roseQuartz);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.divider-star {
+  color: var(--roseQuartz);
+}
+
+#add-to-cart-button-store-view {
+  margin: 20px;
+  width: 45%;
+  color: var(--magnolia);
+  background-color: var(--plum);
+}
+
+/*=======================*/
+/*  Landscape Tablet/PC  */
+/*=======================*/
+
+@media (min-width: 850px) {
+  #item-view-info-container {
+    flex-direction: row;
+  }
+  
+  .divider-container {
+    margin: 10% 0 10% 0;
+  }
+
+
+}
+
 /**end of item view**/
 
