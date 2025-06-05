@@ -1,49 +1,98 @@
 <?php 
+
 include 'includes/header.php';
 include 'database/db.php';
 
-// check if the user is logged in
+// ---------------------------------------------
+// 1. CHECK IF USER IS LOGGED IN
+// ---------------------------------------------
+
 if (!isset($_SESSION['user_id'])) {
     echo "<p class='text-center mt-5'>please <a href='login.php'>log in</a> to view your cart.</p>";
     include 'includes/footer.php';
-    exit;
+    exit; // stops the script so no further code runs
 }
 
-// get the user's ID
+// get the logged-in user's ID from the session
 $user_id = $_SESSION['user_id'];
 
-// get cart items for this user
+
+// ---------------------------------------------
+// 2. FETCH THE USER'S CART ITEMS
+// ---------------------------------------------
+
+// selects the user's cart items and product info
+// joins the 'cart' table with the 'products' table
 $sql = "SELECT cart.product_id, cart.quantity, products.productName, products.price, products.imageURL 
         FROM cart 
         JOIN products ON cart.product_id = products.product_id 
         WHERE cart.user_id = $user_id";
 
+// run the SQL query
 $result = mysqli_query($dbc, $sql);
 
-// if query fails, show error and stop
+// if the query failed, show an error and stop the page
 if (!$result) {
     echo "<div class='container py-5 text-center'>";
     echo "<p style='color: red;'>something went wrong while loading your cart. please try again later.</p>";
+    
+    // also log the error in the server logs for debugging
     error_log("cart query failed: " . mysqli_error($dbc));
+    
     include 'includes/footer.php';
     exit;
 }
 
-// prepare arrays and totals
-$cart_items = [];
-$total = 0;
-$total_quantity = 0;
 
+// ---------------------------------------------
+// 3. PROCESS THE CART RESULTS
+// ---------------------------------------------
+
+// create an empty array to store all the cart items
+$cart_items = [];
+
+// these variables will be used to calculate totals
+$total = 0;           // overall $ total
+$total_quantity = 0;  // total number of macarons in cart
+
+// go through each row in the result set
 while ($row = mysqli_fetch_assoc($result)) {
+    
+    // add the row's data (product info + quantity) to our array
     $cart_items[] = $row;
+
+    // calculate and add the subtotal for this item (price × quantity)
     $total += $row['price'] * $row['quantity'];
+
+    // add the quantity of this product to the total quantity count
     $total_quantity += $row['quantity'];
 }
+
+// result:
+// - $cart_items holds all the user's cart info
+// - $total holds the full price total
+// - $total_quantity tells us how many items are in the cart
+
 ?>
 
 <body class="cart-body">
-  <div class="container py-4">
 
+<!--flash message toast: -->
+  <?php if (isset($_SESSION['cart_flash'])): ?>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 9999;">
+      <div class="toast show align-items-center delete-toast shadow-sm" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="3000">
+        <div class="d-flex">
+          <div class="toast-body">
+            <?= htmlspecialchars($_SESSION['cart_flash']) ?>
+          </div>
+          <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+      </div>
+    </div>
+    <?php unset($_SESSION['cart_flash']); // remove the message so it doesn't show again ?>
+  <?php endif; ?>
+
+  <div class="container py-4">
     <?php if (count($cart_items) === 0): ?>
       <!-- show message if cart is empty -->
       <div class="text-center">
@@ -60,7 +109,7 @@ while ($row = mysqli_fetch_assoc($result)) {
           <?php foreach ($cart_items as $item): 
             $subtotal = $item['price'] * $item['quantity'];
           ?>
-          <tr>
+          <tr data-product-id="<?= $item['product_id'] ?>">
             <!-- product image and name -->
             <td class="d-flex align-items-center" style="flex: 1;">
               <img src="assets/images/<?= htmlspecialchars($item['imageURL']) ?>" alt="<?= htmlspecialchars($item['productName']) ?>">
@@ -88,10 +137,9 @@ while ($row = mysqli_fetch_assoc($result)) {
 
             <!-- remove button -->
               <td class="text-center" style="min-width: 60px;">
-                <a href="delete-cart-item.php?product_id=<?= $item['product_id'] ?>" class="cart-trash-btn" data-label="delete">
-                  <i class="fa-solid fa-trash-can"></i>
+                <a href="delete-cart-item.php?product_id=<?= $item['product_id'] ?>" data-label="delete" class="cart-trash-btn" data-product-id="<?= $item['product_id'] ?>">
+                     <i class="fa-solid fa-trash-can"></i>
                 </a>
-         
               </td>
           </tr>
           <?php endforeach; ?>
@@ -101,10 +149,8 @@ while ($row = mysqli_fetch_assoc($result)) {
       <!-- macaron progress bar -->
       <div class="text-center mt-2">
         <?php
-          // we want to show a total of 10 macarons in the bar
-          // some will be full-color (to show how many items are in the cart)
-          // and the rest will be faded/empty (to show how many more the user needs)
-          $filled = min($total_quantity, 10);
+          //set $filled to whichever is smaller: the actual quantity in the cart ($total_quantity), or 10.
+          $filled = min($total_quantity, 10); 
 
           // calculate how many empty faded macarons to show
           // eg: if the user has 6 items, we’ll show 4 empty ones
@@ -120,8 +166,8 @@ while ($row = mysqli_fetch_assoc($result)) {
 
           // loop through the number of full macarons we want to show
           for ($i = 0; $i < $filled; $i++) {
-            // pick a color by cycling through the color list using modulo (%)
-            // this means if we run out of colors, itll start from the beginning again
+            // pick a colour by cycling through the colour list using modulo (%)
+            // this means if we run out of colours, itll start from the beginning again
             $color = $macaron_colors[$i % count($macaron_colors)];
 
             // display the full-coloured macaron image
@@ -171,6 +217,27 @@ while ($row = mysqli_fetch_assoc($result)) {
         input.value = current + 1;
       });
     });
+
+
+    //delete btn slideout animation:
+      document.querySelectorAll('.cart-trash-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+      e.preventDefault(); // stop the default link redirect for now
+
+      const productId = btn.dataset.productId;
+      const row = document.querySelector(`tr[data-product-id="${productId}"]`);
+
+      if (row) {
+        row.classList.add('slide-out'); // trigger animation
+
+        setTimeout(() => {
+          // go to PHP page *after* animation
+          window.location.href = btn.href; // eg: window.location.href = "delete-cart-item.php?product_id=5";
+        }, 500); 
+      }
+     });
+    });
+
   </script>
 </body>
 
