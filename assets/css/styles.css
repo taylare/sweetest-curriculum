@@ -106,6 +106,7 @@ footer a {
     color: #FCF3FF;
 }
 
+
 .horizontal_separator {
     border-bottom: 1px dashed #fcf3ff8c;
     margin-bottom: 1rem;
@@ -124,6 +125,7 @@ footer {
     padding: 5%;
     background-color: #913C79;
     text-align: center;
+    margin-top: 3%;
 }
 
 @media (min-width: 992px) {
@@ -376,86 +378,116 @@ footer {
 /*********dashboard.php********/
 /*******************************/
 .dashboard-body {
-    background-color: rgb(226, 223, 226); 
-    color: #923c79;
-    text-align: center;
-    font-family: 'Quicksand', sans-serif;
+  background: linear-gradient(135deg, #f4e1fb, #ffe8f5);
+  color: var(--plum);
+  font-family: 'Quicksand', sans-serif;
+  text-align: center;
+
 }
 
+
 .dashboard-heading {
-    margin-bottom: 20px;
-    font-weight: bold;
-    color: #923c79;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--plum);
+  margin-bottom: 1.5rem;
+  text-shadow: 1px 1px #fff;
 }
 
 .dashboard-btn {
-    border-radius: 20px;
-    font-weight: bold;
-    transition: 0.3s;
+  border-radius: 20px;
+  font-weight: bold;
+  padding: 10px 20px;
+  font-size: 1rem;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 10px rgba(145, 60, 121, 0.15);
 }
 
 .btn-success.dashboard-btn {
-    background-color: #c1f7d5;
-    color: #137547;
-    border: none;
+  background-color: var(--teaGreen);
+  color: var(--plum);
+  border: 2px solid #c1f7d5;
 }
 
 .btn-success.dashboard-btn:hover {
-    background-color: #a8eac0;
+  background: linear-gradient(to right, #caffcb, #b2ffcc);
+  transform: scale(1.05);
 }
 
-.btn-primary.dashboard-btn {
-    background-color: rgb(177, 132, 254);
-    color: rgb(107, 60, 136);
-    border: none;
+/* Table styling */
+.dashboard-table {
+  margin: 0 auto;
+  width: 95%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: #fff0fb;
+  box-shadow: 0 8px 20px rgba(144, 64, 124, 0.2);
 }
 
-.btn-primary.dashboard-btn:hover {
-    background-color: var(--plum);;
+/* Table header */
+.dashboard-table th {
+  background-color: var(--plum);
+  color: #fff;
+  padding: 16px;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+/* Table cells */
+.dashboard-table td {
+  padding: 14px;
+  vertical-align: middle;
+  background-color: #fff7fc;
+  color: var(--plum);
+}
+
+/* Zebra striping */
+.dashboard-table tr:nth-child(even) td {
+  background-color: #fceeff;
+}
+
+/* Image styling */
+.dashboard-table img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px dashed var(--powderBlue);
+}
+
+/* Edit and Delete buttons */
+.btn-warning, .btn-danger {
+  padding: 6px 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
 }
 
 .btn-warning {
-    background-color: #ffde7d;
-    border: none;
-    color: #7a5e00;
+  background-color: #ffe9b3;
+  color: #7a5e00;
+  border: none;
 }
 
 .btn-warning:hover {
-    background-color: #ffd45c;
+  background-color: #ffde89;
+  transform: scale(1.05);
 }
 
 .btn-danger {
-    background-color: #ffadad;
-    border: none;
-    color: #7a0000;
+  background-color: #ffc6cc;
+  color: #8a0022;
+  border: none;
 }
 
 .btn-danger:hover {
-    background-color: #ff8b8b;
+  background-color: #ffa1ab;
+  transform: scale(1.05);
 }
 
-.dashboard-table {
-    margin: 0 auto;
-    width: 90%;
-    background-color: #fff0fb;
-    border-collapse: separate;
-    border-spacing: 0;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 0 12px rgba(144, 64, 124, 0.2);
-}
-
-.dashboard-table th {
-    background-color: var(--plum) !important;
-    color: #f7d3ed !important;
-}
-
-.dashboard-table td,
-.dashboard-table th {
-    text-align: center;
-    vertical-align: middle;
-    padding: 16px;
-}
 
 /**end of dashboard.php **/
 
@@ -530,7 +562,7 @@ footer {
   background-color: var(--plum);
   border: none;
   border-radius: 14px;
-  color: var(--plum);
+  color: var(--teaGreen);
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -665,20 +697,20 @@ body.cart-body {
 .cart-btn-increase,
 .btn-update {
   background: var(--powderBlue);
-  color: var(--plum);
+  color: var(--lavendarBlush);
   border: none;
   border-radius: 10px;
   font-weight: bold;
   font-size: 1.2rem;
-  padding: 6px 12px;
+  padding: 3px 6px;
   transition: all 0.2s ease;
 }
 
 .cart-btn-decrease:hover,
 .cart-btn-increase:hover,
 .btn-update:hover {
-  background: var(--plum);
-  color: var(--powderBlue);
+  background: var(--powderBlue);
+  color: var(--lavendarBlush);
   transform: translateY(-1px);
 }
 
@@ -700,11 +732,11 @@ body.cart-body {
   top: -28px;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--powderBlue);
-  color: var(--plum);
-  font-size: 0.7rem;
+  background: var(--plum);
+  color: var(--lavendarBlush);
+  font-size: 1.0rem !important;
   font-weight: bold;
-  padding: 3px 6px;
+  padding: 1px 2px;
   border-radius: 6px;
   white-space: nowrap;
   opacity: 0;
@@ -716,7 +748,6 @@ body.cart-body {
 .cart-trash-btn:hover::after {
   opacity: 1;
 }
-
 
 /* Macaron progress bar images */
 .macaron-progress img {
@@ -771,8 +802,37 @@ body.cart-body {
   margin-top: 0.5rem;
 }
 
+@keyframes slideOut { /* At the start of the animation (0%), set the initial state */
+  0% {
+    transform: translateX(0); /* Element stays in its original position */
+    opacity: 1; /* Element is fully opaque (visible) */
+  }
+  /* At the end of the animation (100%), set the final state */
+  100% {
+    transform: translateX(-100%); /* Element is translated completely to the right */
+    opacity: 0; /* Element becomes fully transparent (fades out) */
+  }
+}
 
+/* Apply the slideOut animation to elements with the .slide-out class */
+.slide-out {
+  animation: slideOut 0.5s ease forwards; /* Use slideOut animation for 0.5 seconds with ease timing function */
+                                           /* Apply the styles defined at the end of the animation even after it ends */
+}
 
+.delete-toast {
+  background: var(--lavendarBlush); 
+  color: var(--plum); 
+  border: 3px solid var(--teaGreen);
+  border-radius: 16px;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.delete-toast .btn-close {
+  filter: invert(0.6); /* make the close button visible on light background */
+}
 
 
 /*********************************/
