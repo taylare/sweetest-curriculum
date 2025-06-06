@@ -8,6 +8,8 @@
 	--powderBlue: #A0B6DE;
   --plum: #913C79;
   --teaGreen: #bcffbd;
+  --lilac: #ead4ff;
+  --alert: #cf1acf;
 }
 
 /* EXAMPLE OF HOW TO USE VARIABLES */
@@ -16,6 +18,49 @@
 /* ******************************* */
 
 html { scroll-behavior: smooth; } /* allows for smooth scrolling through web page */
+
+/****************************/
+/******toast css: ***********/
+/******************************/
+
+.success-cart-add,
+.login-toast {
+  border-radius: 999px; 
+  font-family: 'Segoe UI', sans-serif;
+  padding: 1%;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 2px 2px 8px rgba(144, 104, 152, 0.15);
+  max-width: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  gap: 1rem;
+}
+
+.success-cart-add {
+  background: var(--lavendarBlush);
+  border: 3px dashed var(--alert);
+  color: var(--alert);
+}
+
+.login-toast {
+  background: var(--lavendarBlush);
+  border: 3px dashed var(--alert);
+  color: var(--alert);
+}
+
+a .view-cart-link {
+  text-decoration: none !important;
+}
+
+a .view-cart-link:hover {
+  text-decoration: underline !important;
+  color: var(--teaGreen) !important;
+}
+
+
 
 /************************/
 /****** MAIN PAGE *******/
@@ -124,7 +169,6 @@ footer {
     padding: 5%;
     background-color: #913C79;
     text-align: center;
-    margin-top: 3%;
 }
 
 @media (min-width: 992px) {
@@ -382,6 +426,10 @@ footer {
   font-family: 'Quicksand', sans-serif;
   text-align: center;
 
+}
+
+.dashboard-body footer {
+  margin-top: 3%;
 }
 
 
@@ -1057,39 +1105,163 @@ body.cart-body {
 /*********************************/
 /*************item-view.php***********/
 /********************************/
+
+/*=================*/
+/*      MOBILE     */
+/*=================*/
+
+/* Styles for the body of the item view page */
 #item-view-body {
-  background-color: var(--lavendarBlush);
+  background-color: var(--);
   width: 100%;
   font-weight: normal;
   font-style: normal;
   padding: 0;
   margin: 0;
+  color: var(--roseQuartz);
 }
-
+/* Contains information about the product itself, and the add to cart button */
 #item-view-info-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 100%;
-  height: 100vh;
   box-sizing: border-box;
   padding: 5px;
+  margin-top: 5%;
+  align-items: center;
 }
 
+/* Contains name of the product and the image */
 #product-image-and-title {
   display: flex;
   flex-direction: column;
+  width: 50%;
+  height: fit-content;
   box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
 }
 
-#item-view-product-img-container {
-
+/* The container for the product name located above the image */
+#product-title {
+  display: flex;
+  width: 50%;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+  font-weight: bold;
 }
 
+/* Container that creates a border around the product's image */
 #item-view-product-img-container {
-  display: none;
-  height: 250px;
-  width: 250px;
+  display: flex;
+  border: solid var(--roseQuartz) 4px;
+  border-radius: 50%; /* 5px*/
+  box-sizing: border-box;
+  width: 75%;  /* 95% */
+  height: 75%;
+  /* padding: 2%; */
+}
+
+/* image of the product the user is viewing */
+#item-view-product-img {
+  display: flex;
+  width: 100%;
+  height: 100%;
   aspect-ratio: 1 / 1;
 }
+
+/* container for the review as well as the description of the product */
+
+#rating-and-description-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0px 10px 0px 10px;
+  align-items: center;
+}
+
+#product-view-rating {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+}
+
+#product-view-description {
+  display: flex;
+  text-align: left;
+  font-size: 1.2rem;
+  margin-top: 5%;
+}
+
+.review-star {
+  color: goldenrod;
+  text-shadow: 5px 5px 10px #000000; 
+}
+
+.divider-container {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0 40px 0;
+}
+
+.divider-line {
+  width:40%; 
+  height:2px; 
+  background: var(--roseQuartz);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.divider-star {
+  color: var(--roseQuartz);
+}
+
+#price-and-add-to-cart-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+#add-to-cart-button-store-view {
+  margin: 20px;
+  /*width: 45%; */
+  color: var(--magnolia);
+  background-color: var(--plum);
+  border: 2px solid #e68aff;
+}
+
+#add-to-cart-button-store-view:hover {
+  background-color: var(--teaGreen);
+  color: var(--plum);
+}
+
+
+/*=======================*/
+/*  Landscape Tablet/PC  */
+/*=======================*/
+
+@media (min-width: 850px) {
+  #item-view-info-container {
+    flex-direction: row;
+  }
+  
+  .divider-container {
+    margin: 10% 0 10% 0;
+  }
+
+  #add-to-cart-button-store-view {
+    /* width: 25%;
+    padding: 10px; */
+    font-size: 1.5rem;
+  }
+
+}
+
 /**end of item view**/
-/**end of store page**/
+
