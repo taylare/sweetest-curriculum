@@ -41,10 +41,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     header("Location: admin/dashboard.php");
                     exit;
                 } else {
-                    $_SESSION['logged-in'] = true;
-                    header("Location: index.php");
-                    exit;
-                }
+                      $_SESSION['logged-in'] = true;
+
+                      // check if they were trying to add an item to the cart before logging in
+                      if (isset($_SESSION['pending_add'])) {
+                          $product_id = (int)$_SESSION['pending_add'];
+                          unset($_SESSION['pending_add']); // clear it from session
+                          header("Location: add-to-cart.php?product_id=$product_id");
+                          exit;
+                      }
+
+                      // otherwise just go to the homepage
+                      header("Location: index.php");
+                      exit;
+                  }
+
             } else {
                 //incorrect password
                 $_SESSION['login_error'] = "Invalid password, please try again.";
@@ -62,8 +73,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <body class="login-body">
-
+        
   <div class="login-form-container">
+
     <!-- login Form -->
     <form action="login.php" method="POST" onsubmit="return validation();">
       <h2 class="text-center login-title">Login</h2>
@@ -100,6 +112,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <a href="#"><i class="fab fa-tiktok login-icon tag"></i></a>
     </div>
   </div>
+
+      <!--flash telling user they need to login to add to cart: -->
+    <?php if (isset($_SESSION['flash_add_login'])): ?>
+      <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 9999;">
+        <div class="toast login-toast align-items-center show" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="d-flex">
+            <div class="toast-body">
+              <?= $_SESSION['flash_add_login']; ?>
+            </div>
+            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+        </div>
+      </div>
+      <?php unset($_SESSION['flash_add_login']); ?>
+    <?php endif; ?>
+
 
   <!-- hidden div with PHP error to pass to JS -->
   <?php if (isset($_SESSION['login_error'])): ?>
