@@ -46,6 +46,7 @@
         <div id="item-view-info-container">
             <div id="product-image-and-title">
                 <div id="product-title"> 
+<<<<<<< HEAD
                     <h3><?= htmlspecialchars($prod['productName']) ?></h3>
                 </div>
                 <div id="item-view-product-img-container">
