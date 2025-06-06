@@ -156,6 +156,7 @@ INSERT INTO products (product_id, productName, price, imageURL, description) VAL
 
 -- Product_Category
 INSERT INTO product_category (product_id, category_id) VALUES
+INSERT INTO product_category (product_id, category_id) VALUES
 -- Professor’s Picks
 (9, 1), (15, 1), (22, 1), (5, 1), (32, 1), (3, 1),
 
