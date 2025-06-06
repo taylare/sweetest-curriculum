@@ -1053,6 +1053,7 @@ body.cart-body {
   box-sizing: border-box;
   width: 95%;
   height: 95%;
+  padding: 2%;
 }
 
 /* image of the product the user is viewing */
@@ -1112,12 +1113,27 @@ body.cart-body {
   color: var(--roseQuartz);
 }
 
+#price-and-add-to-cart-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
 #add-to-cart-button-store-view {
   margin: 20px;
   width: 45%;
   color: var(--magnolia);
   background-color: var(--plum);
+  border: 2px solid #e68aff;
 }
+
+#add-to-cart-button-store-view:hover {
+  background-color: var(--teaGreen);
+  color: var(--plum);
+}
+
 
 /*=======================*/
 /*  Landscape Tablet/PC  */
@@ -1132,6 +1148,11 @@ body.cart-body {
     margin: 10% 0 10% 0;
   }
 
+  #add-to-cart-button-store-view {
+    width: 25%;
+    padding: 10px;
+    font-size: 1.5rem;
+  }
 
 }
 

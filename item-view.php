@@ -1,5 +1,30 @@
 <!doctype html>
 <html lang="en">
+    <?php 
+        include 'database/db.php';
+        // checks to make sure product id exists beforehand when the item is clicked on from store view
+        if (isset($_GET['id'])) {
+            // set product id variable to query for product information to display in the page
+            $productid = (int)$_GET['id'];
+
+            // query to get the product's information from the product id
+            $productQuery = "SELECT * FROM products WHERE product_id = $productid LIMIT 1";
+
+            // fetch query from database
+            $prodResult = mysqli_query($dbc, $productQuery);
+
+            // create empty array to hold info
+            $prod = [];
+
+            // Check to make sure the result is returned
+            if ($prodResult) {
+                while ($row = mysqli_fetch_assoc($prodResult)) {
+                    $prod = $row; // add each bit of info to the product
+                }
+            }
+        }       
+    ?>
+
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,35 +46,32 @@
         <div id="item-view-info-container">
             <div id="product-image-and-title">
                 <div id="product-title"> 
-                    <h3> Cool Product </h3>
+                    <h3><?= htmlspecialchars($prod['productName']) ?></h3>
                 </div>
                 <div id="item-view-product-img-container">
-                    <img id="item-view-product-img" src="assets/images/macaron-filler-image.jpg">
+                    <img id="item-view-product-img" src="assets/images/<?= htmlspecialchars($prod['imageURL'])?>">
                 </div>
             </div>
             <div id="rating-and-description-container">
+                <!-- Review stars -->
                 <div id="product-view-rating">
-                    <!-- Demo for creating stars based on the review data in the database -->
+                    
                     <h2> 
-                        <?php 
-                            $i = 0;
-                            # Replace 5 with the review score of the product (get the average of all review scores)
-                            
-                            # how to implement: 1) Get query for item's rating (get the average) and round that to a whole number
-                            #  2) take that value and create a loop that will be nested inside of a loop that counts to 5
-                            #  3) if the internal counter isn't the same value as the rating, create a golden star
-                            #  4) if the internal counter is complete but the external one is still going, create a gray star  
-                            while ($i < 5) {
-                                echo "<i class=\"fa-solid fa-star review-star\"></i>";
-                                $i++;
-                            }
-                        ?>
-                        </h2>
+                        
+                    </h2>
                 </div>
+                <!-- contains the description, price, and add to cart button -->
                 <div id="product-view-description">
-                    <p> This is a totally sick description about this really sick macaron that you should buy because it's super tasty mmmm yum </p>
+                    <!-- Display the description -->
+                    <p><?= htmlspecialchars($prod['description']) ?></p>
                 </div>
-                <button id="add-to-cart-button-store-view" class="btn"> <i class="fa-solid fa-cart-plus"></i> Add </button>
+                <div id="price-and-add-to-cart-container">
+                    <!-- Display the price -->
+                    <h3> $<?= htmlspecialchars($prod['price']) ?> </h3>    
+                    <!-- Add to cart button -->
+                    <button id="add-to-cart-button-store-view" class="btn"> <i class="fa-solid fa-cart-plus"></i> Add </button>
+                </div>
+
             </div>
         </div>
         <div class="divider-container">
@@ -68,5 +90,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 
     </body>
+</html>
 
 

@@ -97,7 +97,7 @@ if ($product_result) {
                             <!-- View Product & Add to Cart Buttons -->
                             <div class="d-flex justify-content-center gap-2">
                                 <!-- View button sends user to product details page -->
-                                <a href="product.php?id=<?= $prod['product_id'] ?>" class="btn view-product-btn">View Product</a>
+                                <a href="item-view.php?id=<?= $prod['product_id'] ?>" class="btn view-product-btn">View Product</a>
 
                                 <!-- Add to Cart form: submits product ID to add-to-cart.php -->
                                 <form action="add-to-cart.php" method="POST">
