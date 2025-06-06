@@ -9,6 +9,7 @@
   --plum: #913C79;
   --teaGreen: #bcffbd;
   --lilac: #ead4ff;
+  --alert: #cf1acf;
 }
 
 /* EXAMPLE OF HOW TO USE VARIABLES */
@@ -39,15 +40,24 @@ html { scroll-behavior: smooth; } /* allows for smooth scrolling through web pag
 }
 
 .success-cart-add {
-  background: var(--teaGreen);
-  border: 3px dashed var(--powderBlue);
-  color: var(--plum);
+  background: var(--lavendarBlush);
+  border: 3px dashed var(--alert);
+  color: var(--alert);
 }
 
 .login-toast {
   background: var(--lavendarBlush);
-  border: 3px dashed var(--powderBlue);
-  color: var(--powderBlue);
+  border: 3px dashed var(--alert);
+  color: var(--alert);
+}
+
+a .view-cart-link {
+  text-decoration: none !important;
+}
+
+a .view-cart-link:hover {
+  text-decoration: underline !important;
+  color: var(--teaGreen) !important;
 }
 
 
@@ -1146,11 +1156,11 @@ body.cart-body {
 #item-view-product-img-container {
   display: flex;
   border: solid var(--roseQuartz) 4px;
-  border-radius: 5px;
+  border-radius: 50%; /* 5px*/
   box-sizing: border-box;
-  width: 95%;
-  height: 95%;
-  padding: 2%;
+  width: 75%;  /* 95% */
+  height: 75%;
+  /* padding: 2%; */
 }
 
 /* image of the product the user is viewing */
@@ -1220,7 +1230,7 @@ body.cart-body {
 
 #add-to-cart-button-store-view {
   margin: 20px;
-  width: 45%;
+  /*width: 45%; */
   color: var(--magnolia);
   background-color: var(--plum);
   border: 2px solid #e68aff;
@@ -1246,8 +1256,8 @@ body.cart-body {
   }
 
   #add-to-cart-button-store-view {
-    width: 25%;
-    padding: 10px;
+    /* width: 25%;
+    padding: 10px; */
     font-size: 1.5rem;
   }
 

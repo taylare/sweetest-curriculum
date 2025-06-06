@@ -28,7 +28,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title> put the product name here </title>
+        <title> <?= htmlspecialchars($prod['productName'])?> </title>
         <!-- Bootstrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
         <!-- The project stylesheet -->
@@ -46,7 +46,6 @@
         <div id="item-view-info-container">
             <div id="product-image-and-title">
                 <div id="product-title"> 
-<<<<<<< HEAD
                     <h3><?= htmlspecialchars($prod['productName']) ?></h3>
                 </div>
                 <div id="item-view-product-img-container">
@@ -62,7 +61,7 @@
                     </h2>
                 </div>
                 <!-- contains the description, price, and add to cart button -->
-                <div id="product-view-description">
+                <div id="product-view-description" class="text-center">
                     <!-- Display the description -->
                     <p><?= htmlspecialchars($prod['description']) ?></p>
                 </div>
@@ -70,7 +69,10 @@
                     <!-- Display the price -->
                     <h3> $<?= htmlspecialchars($prod['price']) ?> </h3>    
                     <!-- Add to cart button -->
-                    <button id="add-to-cart-button-store-view" class="btn"> <i class="fa-solid fa-cart-plus"></i> Add </button>
+                    <form action="add-to-cart.php" method="POST"> 
+                        <input type="hidden" name="product_id" value="<?= $prod['product_id'] ?>">
+                        <button id="add-to-cart-button-store-view" class="btn"> <i class="fa-solid fa-cart-plus"></i> Add </button>
+                    </form>
                 </div>
 
             </div>
