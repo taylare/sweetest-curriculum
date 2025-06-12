@@ -99,6 +99,8 @@ INSERT INTO users (username, userEmail, isAdmin, userPassword) VALUES
 ('SteveLang', 'steveLang@aol.com', FALSE, 'GiraffeLover'),
 ('LebronJames', 'LebronJ@gmail.com', FALSE , 'THEGOAT');
 
+ALTER TABLE users ADD COLUMN privacyAccepted BOOLEAN DEFAULT FALSE;
+
 #--PRODUCTS & CATEGORIES:
 -- Insert Categories
 INSERT INTO categories (category_id, category_name) VALUES
@@ -155,7 +157,6 @@ INSERT INTO products (product_id, productName, price, imageURL, description) VAL
 (40, 'Espresso Exception', 3.50, 'espresso-exception.png', 'Dark espresso core for surviving runtime errors and late-night builds.');
 
 -- Product_Category
-INSERT INTO product_category (product_id, category_id) VALUES
 INSERT INTO product_category (product_id, category_id) VALUES
 -- Professor’s Picks
 (9, 1), (15, 1), (22, 1), (5, 1), (32, 1), (3, 1),
