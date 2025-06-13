@@ -49,6 +49,7 @@
           <li class="nav-item"><a class="nav-link" href="<?= $base_path ?>admin/dashboard.php">Admin</a></li>
         <?php endif; ?>
         <li class="nav-item"><a class="nav-link" href="<?= $base_path ?>logout.php">Logout</a></li>
+        <li class="nav-item"><a class="nav-link" href="<?= $base_path ?>privacy-settings.php"><i class="fa-solid fa-gear"></i></a></li>
       <?php else: ?>
         <li class="nav-item"><a class="nav-link" href="<?= $base_path ?>login.php">Log in</a></li>
       <?php endif; ?>
