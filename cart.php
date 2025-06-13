@@ -190,7 +190,14 @@ while ($row = mysqli_fetch_assoc($result)) {
       
 
           <?php if ($total_quantity >= 10): ?>
-            <a href="order.php" class="cart-checkout-btn">proceed to checkout</a>
+          <form action="shoppingcart-charge.php" method="post">
+                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="pk_test_51RYYoTD0zBi1autjomMiZbNoqGQWyYbNTinew7qeChBt733LegOIe971T543i3ckVULQGLMhsSVfq4Sp2TvbW47K00IOAmWaLk"
+                  data-description="<?php echo 'Payment Checkout'; ?>"
+                  data-amount="<?php echo $total*100; ?>"
+                  data-locale="auto"></script>
+            <input type="hidden" name="totalamt" value="<?php echo $total*100; ?>" />
+          </form>
           <?php else: ?>
             <p class="cart-note">you need at least 10 macarons to place an order.</p>
           <?php endif; ?>
