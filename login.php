@@ -7,21 +7,21 @@ $base_path = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     //check if email or password fields were empty
-    if (empty($_POST['email']) || empty($_POST['password'])) {
+    if (empty($_POST['username']) || empty($_POST['password'])) {
         // save error message in a session variable temporarily
         $_SESSION['login_error'] = "Please enter both email and password.";
         header("Location: login.php");
         exit;
     } else {
         //store submitted email and password
-        $email = $_POST['email'];
+        $username = $_POST['username'];
         $password = $_POST['password'];
 
         //sanitize email to prevent SQL injection
-        $email = mysqli_real_escape_string($dbc, $email);
+        $username = mysqli_real_escape_string($dbc, $username);
 
         //look up the user by email
-        $sql = "SELECT * FROM users WHERE userEmail = '$email'";
+        $sql = "SELECT * FROM users WHERE username = '$username'";
         $result = mysqli_query($dbc, $sql);
 
         //if user is found
@@ -41,10 +41,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     header("Location: admin/dashboard.php");
                     exit;
                 } else {
-                    $_SESSION['logged-in'] = true;
-                    header("Location: index.php");
-                    exit;
-                }
+                      $_SESSION['logged-in'] = true;
+
+                      // check if they were trying to add an item to the cart before logging in
+                      if (isset($_SESSION['pending_add'])) {
+                          $product_id = (int)$_SESSION['pending_add'];
+                          unset($_SESSION['pending_add']); // clear it from session
+                          header("Location: add-to-cart.php?product_id=$product_id");
+                          exit;
+                      }
+
+                      // otherwise just go to the homepage
+                      header("Location: index.php");
+                      exit;
+                  }
+
             } else {
                 //incorrect password
                 $_SESSION['login_error'] = "Invalid password, please try again.";
@@ -53,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         } else {
             //no user found with that email
-            $_SESSION['login_error'] = "Invalid Email or Password.";
+            $_SESSION['login_error'] = "Invalid Username or Password.";
             header("Location: login.php");
             exit;
         }
@@ -62,16 +73,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <body class="login-body">
-
+      <!--flash telling user they need to login to add to cart: -->
+      <?php if (isset($_SESSION['flash_add_login'])): ?>
+      <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 9999;">
+        <div class="toast login-toast align-items-center show" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="d-flex">
+            <div class="toast-body">
+              <?= $_SESSION['flash_add_login']; ?>
+            </div>
+            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+        </div>
+      </div>
+      <?php unset($_SESSION['flash_add_login']); ?>
+    <?php endif; ?>
+        
   <div class="login-form-container">
+
     <!-- login Form -->
     <form action="login.php" method="POST" onsubmit="return validation();">
       <h2 class="text-center login-title">Login</h2>
 
       <!-- email input -->
       <div class="mb-3">
-        <label class="form-label login-label">Email</label>
-        <input type="email" name="email" id="email" class="form-control login-input" />
+        <label class="form-label login-label">Username</label>
+        <input type="username" name="username" id="username" class="form-control login-input" />
         <p class="login-error-msg" id="email-error"></p>
       </div>
 
@@ -100,6 +126,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <a href="#"><i class="fab fa-tiktok login-icon tag"></i></a>
     </div>
   </div>
+
+  
+
 
   <!-- hidden div with PHP error to pass to JS -->
   <?php if (isset($_SESSION['login_error'])): ?>
