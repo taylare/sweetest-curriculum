@@ -776,8 +776,14 @@ body.cart-body {
   margin-top: 2rem;
 }
 
+/* Modifications to the Stripe checkout button */
+
+.stripe-button-el span {
+  color: red;
+}
+
 .cart-checkout-btn {
-  background: var(--teaGreen);
+  
   color: var(--plum);
   padding: 10px 20px;
   font-size: 1.1rem;
