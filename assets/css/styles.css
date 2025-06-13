@@ -920,6 +920,7 @@ body.cart-body {
   margin-top: 0.5rem;
 }
 
+
 @keyframes slideOut { /* At the start of the animation (0%), set the initial state */
   0% {
     transform: translateX(0); /* Element stays in its original position */
@@ -950,6 +951,14 @@ body.cart-body {
 
 .delete-toast .btn-close {
   filter: invert(0.6); /* make the close button visible on light background */
+}
+
+
+.cart-table tbody{
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 80%;
 }
 
 
@@ -1528,6 +1537,8 @@ min-width: 60px;
     margin-top: 7%;
   }
 
+/**end of item view**/
+
   /* product card container */
 .product-card {
   border-radius: 20px;
@@ -1567,13 +1578,19 @@ min-width: 60px;
   margin-bottom: 1rem;
 }
 
+.cart-table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 
 
 }
 
 
 
-/**end of item view**/
+
 
 /**privacy-settings.php page**/
 

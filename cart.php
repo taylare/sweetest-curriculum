@@ -103,7 +103,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     <?php else: ?>
       <!-- show cart table if there are items -->
       <h2 class="cart-title">Your Shopping Cart</h2>
-    <div class = "table-responsive">
+    <div class="table-responsive-sm" id="cart-table">
       <table class="cart-table w-100">
         <tbody>
           <?php foreach ($cart_items as $item): 
