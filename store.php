@@ -52,6 +52,22 @@ if ($product_result) {
 
 <div class="product-page-body">
 
+<!-- flash for when product is added to cart: -->
+<?php if (isset($_SESSION['flash_add_success'])): ?>
+  <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 9999;">
+    <div class="toast success-cart-add align-items-center show" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          <?= $_SESSION['flash_add_success']; ?>
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+  <?php unset($_SESSION['flash_add_success']); ?>
+<?php endif; ?>
+
+
     <!-- if a category is selected and it has a description, display it above the product list -->
     <?php if ($selected_category && isset($categoryDescriptions[$selected_category])): ?>
     <div class="category-description text-center">
@@ -97,7 +113,7 @@ if ($product_result) {
                             <!-- View Product & Add to Cart Buttons -->
                             <div class="d-flex justify-content-center gap-2">
                                 <!-- View button sends user to product details page -->
-                                <a href="product.php?id=<?= $prod['product_id'] ?>" class="btn view-product-btn">View Product</a>
+                                <a href="item-view.php?id=<?= $prod['product_id'] ?>" class="btn view-product-btn">View Product</a>
 
                                 <!-- Add to Cart form: submits product ID to add-to-cart.php -->
                                 <form action="add-to-cart.php" method="POST">

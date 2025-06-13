@@ -43,7 +43,7 @@ if (!$result) {
     exit;
 }
 
-
+  
 // ---------------------------------------------
 // 3. PROCESS THE CART RESULTS
 // ---------------------------------------------
@@ -79,7 +79,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 <!--flash message toast: -->
   <?php if (isset($_SESSION['cart_flash'])): ?>
-    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 9999;">
+    <div class="toast-container position-fixed top-0 start-0 p-3" style="top: 20px; left: 20px; z-index: 2;">
       <div class="toast show align-items-center delete-toast shadow-sm" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="3000">
         <div class="d-flex">
           <div class="toast-body">
@@ -103,7 +103,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     <?php else: ?>
       <!-- show cart table if there are items -->
       <h2 class="cart-title">Your Shopping Cart</h2>
-
+    <div class="table-responsive-sm" id="cart-table">
       <table class="cart-table w-100">
         <tbody>
           <?php foreach ($cart_items as $item): 
@@ -120,7 +120,7 @@ while ($row = mysqli_fetch_assoc($result)) {
             </td>
 
             <!-- quantity controls -->
-            <td style="min-width: 180px;">
+            <td id = "quanity-control-width">
               <form action="update-cart.php" method="post" class="d-flex align-items-center justify-content-center gap-2">
                 <input type="hidden" name="product_id" value="<?= $item['product_id'] ?>">
                 <button type="button" class="cart-btn-decrease">−</button>
@@ -131,12 +131,12 @@ while ($row = mysqli_fetch_assoc($result)) {
             </td>
 
             <!-- subtotal -->
-            <td class="text-center" style="min-width: 100px;">
+            <td class="text-center" id = "subtotal-width">
               total:<br>$<?= number_format($subtotal, 2) ?>
             </td>
 
             <!-- remove button -->
-              <td class="text-center" style="min-width: 60px;">
+              <td class="text-center" id = "remove-button-width">
                 <a href="delete-cart-item.php?product_id=<?= $item['product_id'] ?>" data-label="delete" class="cart-trash-btn" data-product-id="<?= $item['product_id'] ?>">
                      <i class="fa-solid fa-trash-can"></i>
                 </a>
@@ -145,7 +145,7 @@ while ($row = mysqli_fetch_assoc($result)) {
           <?php endforeach; ?>
         </tbody>
       </table>
-
+    </div>      
       <!-- macaron progress bar -->
       <div class="text-center mt-2">
         <?php
@@ -190,7 +190,14 @@ while ($row = mysqli_fetch_assoc($result)) {
       
 
           <?php if ($total_quantity >= 10): ?>
-            <a href="order.php" class="cart-checkout-btn">proceed to checkout</a>
+          <form action="shoppingcart-charge.php" method="post">
+                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="pk_test_51RYYoTD0zBi1autjomMiZbNoqGQWyYbNTinew7qeChBt733LegOIe971T543i3ckVULQGLMhsSVfq4Sp2TvbW47K00IOAmWaLk"
+                  data-description="<?php echo 'Payment Checkout'; ?>"
+                  data-amount="<?php echo $total*100; ?>"
+                  data-locale="auto"></script>
+            <input type="hidden" name="totalamt" value="<?php echo $total*100; ?>" />
+          </form>
           <?php else: ?>
             <p class="cart-note">you need at least 10 macarons to place an order.</p>
           <?php endif; ?>
