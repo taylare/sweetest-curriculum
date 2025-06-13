@@ -6,7 +6,8 @@ CREATE TABLE users (
     username VARCHAR(50) NOT NULL,
     userEmail VARCHAR(100) NOT NULL,
     isAdmin BOOLEAN NOT NULL DEFAULT FALSE,
-    userPassword VARCHAR(100) NOT NULL
+    userPassword VARCHAR(100) NOT NULL,
+    privacyAccepted BOOLEAN DEFAULT FALSE
 );
 
 -- PRODUCTS
@@ -98,8 +99,6 @@ INSERT INTO users (username, userEmail, isAdmin, userPassword) VALUES
 ('BrandonDevnich', 'BrandonDevnich@instructor.ca', FALSE, 'CompsciWizard'),
 ('SteveLang', 'steveLang@aol.com', FALSE, 'GiraffeLover'),
 ('LebronJames', 'LebronJ@gmail.com', FALSE , 'THEGOAT');
-
-ALTER TABLE users ADD COLUMN privacyAccepted BOOLEAN DEFAULT FALSE;
 
 #--PRODUCTS & CATEGORIES:
 -- Insert Categories
