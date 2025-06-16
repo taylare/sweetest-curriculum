@@ -38,7 +38,7 @@ if ($result) {
     <h2 class="dashboard-heading">Hello <?= $user ?>, Welcome to the Products Dashboard!</h2>
     
     <a href="add-products.php" class="btn btn-success dashboard-btn mb-3">+ Add New Product</a>
-
+ <div class = "table-responsive">
     <table class="table dashboard-table table-bordered table-striped">
         <thead>
             <tr>
@@ -73,6 +73,7 @@ if ($result) {
             <?php endforeach; ?>
         </tbody>
     </table>
+</div>
 </body>
 </html>
 <?php include '../includes/footer.php'; ?>
