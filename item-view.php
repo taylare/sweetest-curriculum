@@ -154,7 +154,7 @@ if ($recommend_result) {
                 <h5 class="text-center mb-4">you may also like...</h5>
 
                 <!-- start of bootstrap carousel -->
-                <div id="multiItemCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div id="multiItemCarousel" class="rec-carousel carousel slide" data-bs-ride="carousel">
 
                     <!-- all carousel slides go inside here -->
                     <div class="carousel-inner">
@@ -171,8 +171,9 @@ if ($recommend_result) {
                         <?php for ($i = 0; $i < count($recommended_products); $i += 3): ?>
                             <!-- set the first carousel item to 'active' for visibility -->
                             <div class="carousel-item <?= $i === 0 ? 'active' : '' ?>">
+                    
                                 <!-- row of 3 product cards -->
-                                <div class="d-flex justify-content-center gap-4">
+                                    <div class="d-flex justify-content-center gap-4">
                                     <?php for ($j = $i; $j < $i + 3 && $j < count($recommended_products); $j++): ?>
                                         <!-- individual product card -->
                                         <a href="item-view.php?id=<?= $recommended_products[$j]['product_id'] ?>" class="rec-card text-decoration-none text-dark text-center p-2">
