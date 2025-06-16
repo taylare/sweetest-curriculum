@@ -123,10 +123,9 @@ while ($row = mysqli_fetch_assoc($result)) {
             <td id = "quanity-control-width">
               <form action="update-cart.php" method="post" class="d-flex align-items-center justify-content-center gap-2">
                 <input type="hidden" name="product_id" value="<?= $item['product_id'] ?>">
-                <button type="button" class="cart-btn-decrease">−</button>
+                <button type="submit" class="cart-btn-decrease">−</button>
                 <input type="number" name="quantity" value="<?= $item['quantity'] ?>" min="1" class="quantity-input" readonly>
-                <button type="button" class="cart-btn-increase">+</button>
-                <button type="submit" class="btn-update">✔</button>
+                <button type="submit" class="cart-btn-increase">+</button>
               </form>
             </td>
 
@@ -187,7 +186,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         <div class="mt-4 text-center">
           <label class="form-label fw-semibold">macarons in cart: <?= $total_quantity ?>/10</label><br>
           <p class="cart-total">total: $<?= number_format($total, 2) ?></p>
-      
+
 
           <?php if ($total_quantity >= 10): ?>
           <form action="shoppingcart-charge.php" method="post">
@@ -202,8 +201,13 @@ while ($row = mysqli_fetch_assoc($result)) {
             <p class="cart-note">you need at least 10 macarons to place an order.</p>
           <?php endif; ?>
         </div>
+           <!-- clear cart button -->
+          <form action="clear-cart.php" method="post" class="d-inline">
+            <button type="submit" class="cart-clear-btn mt-3">clear cart</button>
+          </form>
       </div>
     <?php endif; ?> <!-- closes if cart has items -->
+    
     
   </div> <!-- closes .container -->
 

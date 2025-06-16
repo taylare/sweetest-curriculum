@@ -896,7 +896,7 @@ body.cart-body {
   margin-top: 2rem;
 }
 
-.cart-checkout-btn {
+.cart-clear-btn {
   background: var(--teaGreen);
   color: var(--plum);
   padding: 10px 20px;
@@ -910,7 +910,7 @@ body.cart-body {
   transition: all 0.2s ease;
 }
 
-.cart-checkout-btn:hover {
+.cart-clear-btn:hover {
   background: linear-gradient(to right, var(--teaGreen), #d8ffca);
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(200, 150, 255, 0.6);
@@ -961,6 +961,11 @@ body.cart-body {
   flex-direction: column;
   box-sizing: border-box;
   width: 80%;
+}
+
+.btn-outline-danger:hover {
+  background-color: #ffe6fa;
+  border-color: var(--roseQuartz);
 }
 
 
