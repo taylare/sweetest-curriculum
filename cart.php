@@ -188,7 +188,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 
           <?php if ($total_quantity >= 10): ?>
-          <form action="shoppingcart-charge.php" method="post">
+          <form action="receipt.php" method="post">
                 <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                   data-key="pk_test_51RYYoTD0zBi1autjomMiZbNoqGQWyYbNTinew7qeChBt733LegOIe971T543i3ckVULQGLMhsSVfq4Sp2TvbW47K00IOAmWaLk"
                   data-description="<?php echo 'Payment Checkout'; ?>"
