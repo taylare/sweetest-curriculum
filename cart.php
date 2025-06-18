@@ -73,6 +73,15 @@ while ($row = mysqli_fetch_assoc($result)) {
 // - $total holds the full price total
 // - $total_quantity tells us how many items are in the cart
 
+//grabbing user info to check if they've accepted the privacy agreement:
+$sqlPrivacy = "SELECT privacyAccepted FROM users WHERE user_id = $user_id";
+$privacyResult = mysqli_query($dbc, $sqlPrivacy);
+
+$privacyAccepted = false;
+if ($privacyResult && mysqli_num_rows($privacyResult) > 0) {
+    $privacyAccepted = (bool)mysqli_fetch_assoc($privacyResult)['privacyAccepted'];
+}
+
 ?>
 
 <body class="cart-body">
@@ -83,7 +92,7 @@ while ($row = mysqli_fetch_assoc($result)) {
       <div class="toast show align-items-center delete-toast shadow-sm" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="3000">
         <div class="d-flex">
           <div class="toast-body">
-            <?= htmlspecialchars($_SESSION['cart_flash']) ?>
+            <?= ($_SESSION['cart_flash']) ?>
           </div>
           <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
@@ -112,7 +121,7 @@ while ($row = mysqli_fetch_assoc($result)) {
           <tr data-product-id="<?= $item['product_id'] ?>">
             <!-- product image and name -->
             <td class="d-flex align-items-center" style="flex: 1;">
-              <img src="assets/images/<?= htmlspecialchars($item['imageURL']) ?>" alt="<?= htmlspecialchars($item['productName']) ?>">
+               <a href="item-view.php?id=<?= $item['product_id'] ?>"><img src="assets/images/<?= htmlspecialchars($item['imageURL']) ?>" alt="<?= htmlspecialchars($item['productName']) ?>"></a>
               <div class="ms-3">
                 <div><strong><?= htmlspecialchars($item['productName']) ?></strong></div>
                 <div style="font-size: 0.9rem;">$<?= number_format($item['price'], 2) ?></div>
@@ -190,11 +199,15 @@ while ($row = mysqli_fetch_assoc($result)) {
 
           <?php if ($total_quantity >= 10): ?>
           <form action="shoppingcart-charge.php" method="post">
+            <?php if ($privacyAccepted): ?>
                 <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                   data-key="pk_test_51RYYoTD0zBi1autjomMiZbNoqGQWyYbNTinew7qeChBt733LegOIe971T543i3ckVULQGLMhsSVfq4Sp2TvbW47K00IOAmWaLk"
                   data-description="<?php echo 'Payment Checkout'; ?>"
                   data-amount="<?php echo $total*100; ?>"
                   data-locale="auto"></script>
+            <?php else: ?>
+              <p class="cart-note"><a target="_blank" href="privacy-settings.php">Privacy Agreement</a> must be accepted before checking out.</p>
+            <?php endif; ?>
             <input type="hidden" name="totalamt" value="<?php echo $total*100; ?>" />
           </form>
           <?php else: ?>
