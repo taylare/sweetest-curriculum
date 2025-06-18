@@ -32,7 +32,8 @@ $sql = "DELETE FROM cart WHERE user_id = $user_id AND product_id = $product_id";
 $result = mysqli_query($dbc, $sql);
 
 if ($result && mysqli_affected_rows($dbc) > 0) {
-    $_SESSION['cart_flash'] = "$prodName removed from cart.";
+    $_SESSION['cart_flash'] = "<a href='item-view.php?id=$product_id' class='text-decoration-underline fw-semibold'>$prodName</a> removed from cart.";
+
 } else {
     $_SESSION['flash'] = "Could not remove item. Please try again.";
 }

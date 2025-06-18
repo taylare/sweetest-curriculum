@@ -37,10 +37,11 @@
       <p>
         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
       </p>
-
+  <?php if (isset($_SESSION['user_id'])):?>
       <div class="text-center mt-4">
         <a href="privacy-settings.php" class="privacy-btn">View Your Privacy Settings</a>
       </div>
+  <?php endif; ?>
     </div>
   </div>
 
