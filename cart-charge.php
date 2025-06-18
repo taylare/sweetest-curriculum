@@ -1,6 +1,4 @@
 <?php
-
- 
   require_once('./config.php');
 
   $token  = $_POST['stripeToken'];
@@ -8,7 +6,7 @@
    
   $totalamt = $_POST['totalamt'];
   
-
+ 
   $customer = \Stripe\Customer::create(array(
       'email' => $email,
       'source'  => $token

@@ -189,7 +189,6 @@ if ($privacyResult && mysqli_num_rows($privacyResult) > 0) {
         ?>
       </div>
 
-
       <!-- total and checkout area -->
       <div class="cart-total-wrapper">
         <div class="mt-4 text-center">
@@ -198,7 +197,7 @@ if ($privacyResult && mysqli_num_rows($privacyResult) > 0) {
 
 
           <?php if ($total_quantity >= 10): ?>
-          <form action="shoppingcart-charge.php" method="post">
+          <form action="order-receipt.php" method="post">
             <?php if ($privacyAccepted): ?>
                 <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                   data-key="pk_test_51RYYoTD0zBi1autjomMiZbNoqGQWyYbNTinew7qeChBt733LegOIe971T543i3ckVULQGLMhsSVfq4Sp2TvbW47K00IOAmWaLk"

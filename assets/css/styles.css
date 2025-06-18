@@ -980,7 +980,26 @@ body.cart-body {
   margin-top: 2rem;
 }
 
-.cart-clear-btn {
+/* Modifications to the Stripe checkout button */
+
+.stripe-button-el span {
+  color: red;
+}
+
+.cart-checkout-btn {
+  color: var(--plum);
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  border-radius: 12px; 
+  border: 2px solid #d8b4ff;
+  box-shadow: 0 5px 15px rgba(200, 150, 255, 0.4);
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 10px;
+  transition: all 0.2s ease;
+}
+
+  .cart-clear-btn {
   font-size: 1rem;
   padding: 0.3rem 0.825rem;
   border: 2px solid #fff6f8;
