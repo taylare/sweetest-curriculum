@@ -85,8 +85,7 @@ a .view-cart-link:hover {
     color: #FCF3FF;
 }
 
-<<<<<<< HEAD
-=======
+
 /************************/
 /****** INDEX PAGE ******/
 /************************/
@@ -159,7 +158,6 @@ body.index-body {
   color: var(--plum);
 }
 
->>>>>>> 61f2f701e7d990dcec0efbd237578df3e7cd60f2
 #navbar_brand {
     justify-content: center;
     display: flex;
@@ -333,6 +331,7 @@ footer {
 /****** INDEX PAGE ******/
 /************************/
 
+/*positions for images*/
 .slideshow-container {
     position: absolute;
     top: 0;
@@ -342,7 +341,7 @@ footer {
     z-index: -1;
      display: block;
 }
-
+/*Actual images*/
 .slide-image {
     display: block;
     position: absolute;
@@ -353,11 +352,11 @@ footer {
     animation: fade 15s infinite;
 }
 
-
+/*image animation*/
 .image1 { animation-delay: 0s; }
 .image2 { animation-delay: 5s; }
 .image3 { animation-delay: 10s; }
-
+/*Keyframe for images*/
 @keyframes fade {
     0%   { opacity: 0; }
     10%  { opacity: 1; }
@@ -369,18 +368,17 @@ footer {
 .index-header {
 color: var(--plum);
 }
-
-/* #logo-index {
+/*position for the index*/
+#logo-index {
   position: absolute;
-  top: 10vh;
+  top: 20vh;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 3; 
-  width: clamp(60px, 10vw, 120px); 
-  height: auto;
-  pointer-events: none; 
+  z-index: 9999; 
+  width: 600px;
+  height: 600px;
   filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
-} */
+}
 
 #shop-button {
   position: absolute;
@@ -450,15 +448,15 @@ body.index-body {
   #about p {
     font-size: 1rem;
   }
-}
 
-/* @media (max-width: 1441px){
-
-  #aboutIndex{
-    margin: 100px;
+  #logo-index{
+    width: 300px;
+    height: 300px;
+    top: 30vh;
   }
 
-} */
+}
+
 
 @media (min-width: 3840px) {
   #aboutIndex {
@@ -703,17 +701,15 @@ body.index-body {
 
 /* Image styling */
 .dashboard-table img {
-<<<<<<< HEAD
+
   width: 30px;
   height: 30px;
   border-radius: 100%;
   border: 3px dashed var(--powderBlue);
-=======
   width: 50px;
   height: 50px;
   border-radius: 100%;
   border: 2px solid var(--powderBlue);
->>>>>>> 61f2f701e7d990dcec0efbd237578df3e7cd60f2
 }
 
 /* Edit and Delete buttons */
@@ -1366,24 +1362,23 @@ body.cart-body {
 /* image at top of card */
 .product-card-img {
   border-radius: 50%;
-<<<<<<< HEAD
+
   border: 3px dashed var(--powderBlue); 
-=======
+
   border: 3px solid var(--powderBlue); 
->>>>>>> 61f2f701e7d990dcec0efbd237578df3e7cd60f2
+
   width: 80px;
   height: 80px;
   object-fit: cover; 
   display: block;
   margin: 0.75rem auto 0.75rem; 
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05); 
-<<<<<<< HEAD
-=======
+
 }
 
 img.card-img-top.product-card-img {
   border: 3px solid var(--powderBlue); 
->>>>>>> 61f2f701e7d990dcec0efbd237578df3e7cd60f2
+
 }
 
 
@@ -1413,10 +1408,9 @@ img.card-img-top.product-card-img {
 .storepage,
 .add-to-cart-btn,
 .view-product-btn {
-<<<<<<< HEAD
+
   font-family: 'Baloo 2', cursive; 
-=======
->>>>>>> 61f2f701e7d990dcec0efbd237578df3e7cd60f2
+
   font-size: 0.7125rem;
   padding: 0.3rem 0.825rem;
   border: 2px solid #fff6f8;
@@ -1799,9 +1793,7 @@ img.card-img-top.product-card-img {
   margin: 0;
 }
 
-<<<<<<< HEAD
 
-=======
 /*-------------------------------------*/
 /* mobile view for carousel & reviews */
 /*------------------------------------*/
@@ -1901,7 +1893,7 @@ img.card-img-top.product-card-img {
       margin: 0;
     }
   }
->>>>>>> 61f2f701e7d990dcec0efbd237578df3e7cd60f2
+
 /*=======================*/
 /*  Landscape Tablet/PC  */
 /*=======================*/
@@ -1909,7 +1901,7 @@ img.card-img-top.product-card-img {
 .cart-table tbody tr {
   flex-direction: row;
   align-items: center;
-<<<<<<< HEAD
+
 }
 
 
@@ -2058,9 +2050,6 @@ min-width: 60px;
 }
 
 
-
-=======
->>>>>>> 61f2f701e7d990dcec0efbd237578df3e7cd60f2
 }
 
 
@@ -2247,8 +2236,7 @@ min-width: 60px;
     max-height: 375px;
   }
 }
-<<<<<<< HEAD
-=======
+
 
 /****************************************/
 /********** ORDER-HISTORY.PHP ***********/
@@ -2405,4 +2393,4 @@ min-width: 60px;
 
 
 /**end of order-history.php**/
->>>>>>> 61f2f701e7d990dcec0efbd237578df3e7cd60f2
+

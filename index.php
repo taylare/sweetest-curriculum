@@ -7,13 +7,14 @@ $base_path = '';
 
 <body class="index-body">
     <?php 
+    //check if the user is logged in or not
 if (isset($_SESSION['logged-in']) && $_SESSION['logged-in']) {
     // store the username
     $user = htmlspecialchars($_SESSION['username']);
     $_SESSION['login_flash'] = "Hello, $user!";   
 }
 ?>
-
+<!--Log in popup with name-->
 <?php if (isset($_SESSION['login_flash'])): ?>
   <div class="home-toast toast-container p-3" style="z-index: 2;">
     <div class="toast show align-items-center shadow-sm" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="4000">
@@ -36,11 +37,10 @@ if (isset($_SESSION['logged-in']) && $_SESSION['logged-in']) {
             <img src="assets/images/macaron-screen2.jpg" class="slide-image image2">
             <img src="assets/images/macaron-screen3.jpg" class="slide-image image3">
         </div>
-        <a class="btn" href="store.php" role="button" id = "shop-button">Shop now!</a>
-<<<<<<< HEAD
-        <!-- <img src="assets/images/logo.png" id="logo-index"> -->
-=======
->>>>>>> 61f2f701e7d990dcec0efbd237578df3e7cd60f2
+        <a href="store.php">
+            <img src="assets/images/logo.png" id="logo-index" alt="Site Logo">
+        </a>
+
     </section>
     
     <!--Divider seperator-->
@@ -76,9 +76,22 @@ if (isset($_SESSION['logged-in']) && $_SESSION['logged-in']) {
             if (!$popular) {
             die("Query failed: " . mysqli_error($dbc));
                 }
+
+            //get 9 random items from the database to display each time
+            $random_ids = "SELECT * FROM products ORDER BY RAND() LIMIT 9";
+            $result = mysqli_query($dbc, $random_ids);
+            $recommended_products = [];
+        
+            if ($result && mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+            $recommended_products[] = $row;
+            }
+}
+
+
             ?>
 
-<!-- product card layout: Bootstrap row with spacing between cards -->
+    <!-- Most popular items-->
     <div class="container px-4">
         <div class="row g-4 justify-content-center prod-container">
            <?php while ($row = mysqli_fetch_assoc($popular)): ?>
@@ -122,17 +135,72 @@ if (isset($_SESSION['logged-in']) && $_SESSION['logged-in']) {
         </section>
 
     <div class="divider-container">
-            <div class="divider-line"> <i class="fa-solid fa-star divider-star"></i> </div>
+            <div class="divider-line"> <i class="fa-solid fa-star divider-star mb-0"></i> </div>
         </div>
     
         <section id = "recommended" class="min-vh-80 d-flex flex-column justify-content-center align-items-center text-center text-white position-relative">
-        <!--Display products similar to what you have purchased (like categories, flavour etc)-->
-         <h2 class = "index-header">Recommended products</h2>
-        <div class="p-3 m-3 text-danger border-dotted">
+        <!--Display most bought products on the store-->
+         <h2 class = "index-header mb-5">Recommended products</h2>
+
+        <!--------------------------->
+        <!-------rec carousel-------->
+        <!--------------------------->
+
+        <?php if (!empty($recommended_products)): ?>
+            <!-- outer wrapper for carousel -->
+            <div class="container">
+
+                <!-- start of bootstrap carousel -->
+                <div id="multiItemCarousel" class="rec-carousel carousel slide" data-bs-ride="carousel">
+
+                    <!-- all carousel slides go inside here -->
+                    <div class="carousel-inner">
+                        <?php for ($i = 0; $i < count($recommended_products); $i += 3): ?>
+                            <!-- set the first carousel item to 'active' for visibility -->
+                            <div class="carousel-item <?= $i === 0 ? 'active' : '' ?>">
+                    
+                                <!-- row of 3 product cards -->
+                                    <div class="d-flex justify-content-center gap-4">
+                                    <?php for ($j = $i; $j < $i + 3 && $j < count($recommended_products); $j++): ?>
+                                        <!-- individual product card -->
+                                        <a href="item-view.php?id=<?= $recommended_products[$j]['product_id'] ?>" class="rec-card text-decoration-none text-dark text-center p-2">
+                                            <!-- product image -->
+                                            <img src="assets/images/<?= htmlspecialchars($recommended_products[$j]['imageURL']) ?>" class="img-fluid rec-img mb-2" alt="<?= htmlspecialchars($recommended_products[$j]['productName']) ?>">
+                                            <!-- product name -->
+                                            <small class="fw-semibold"><?= htmlspecialchars($recommended_products[$j]['productName']) ?></small>
+                                        </a>
+                                    <?php endfor; ?>
+                                </div>
+                            </div>
+                        <?php endfor; ?>
+                    </div>
+
+                    <!-- left arrow button -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#multiItemCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+
+                    <!-- right arrow button -->
+                    <button class="carousel-control-next" type="button" data-bs-target="#multiItemCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
+
+                    <!-- circle indicators under the carousel -->
+                    <div class="carousel-indicators mt-4">
+                        <?php for ($i = 0; $i < ceil(count($recommended_products) / 3); $i++): ?>
+                            <!-- show one dot per group of 3 products -->
+                            <button type="button" data-bs-target="#multiItemCarousel" data-bs-slide-to="<?= $i ?>" class="<?= $i === 0 ? 'active' : '' ?>" aria-label="slide <?= $i + 1 ?>"></button>
+                        <?php endfor; ?>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+
+         <div class="p-3 m-3 text-danger border-dotted mt-5">
         <a class="btn storepage" href="store.php" role="button">See more</a>
         </div>
         </section>
-<<<<<<< HEAD
+
             
             
         <div class="divider-container">
@@ -169,9 +237,6 @@ if (isset($_SESSION['logged-in']) && $_SESSION['logged-in']) {
            </div>
         </section>
 
-=======
 
-
->>>>>>> 61f2f701e7d990dcec0efbd237578df3e7cd60f2
 </body>
 <?php include 'includes/footer.php'; ?>
