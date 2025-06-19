@@ -49,7 +49,20 @@
           <li class="nav-item"><a class="nav-link" href="<?= $base_path ?>admin/dashboard.php">Admin</a></li>
         <?php endif; ?>
         <li class="nav-item"><a class="nav-link" href="<?= $base_path ?>logout.php">Logout</a></li>
-        <li class="nav-item"><a class="nav-link" href="<?= $base_path ?>privacy-settings.php"><i class="fa-solid fa-gear"></i></a></li>
+
+        <!--dropdown for order-history & privacy setting-->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="settingsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-gear"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="settingsDropdown">
+            <li><a class="dropdown-item" href="<?= $base_path ?>order-history.php">Order History</a></li>
+            <li><a class="dropdown-item" href="<?= $base_path ?>privacy-settings.php">Privacy Settings</a></li>
+          </ul>
+        </li>
+
+
+
       <?php else: ?>
         <li class="nav-item"><a class="nav-link" href="<?= $base_path ?>login.php">Log in</a></li>
       <?php endif; ?>
@@ -85,6 +98,16 @@
             <li class="nav-item"><a class="nav-link" href="<?= $base_path ?>login.php">Log in</a></li>
           <?php endif; ?>
           <li class="nav-item"><a class="nav-link" href="<?= $base_path ?>cart.php"><i class="fa-solid fa-cart-shopping"></i> Cart</a></li>
+          <!-- Cogwheel dropdown in mobile view -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="mobileSettingsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-gear"></i>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="mobileSettingsDropdown">
+              <li><a class="dropdown-item" href="<?= $base_path ?>order-history.php">Order History</a></li>
+              <li><a class="dropdown-item" href="<?= $base_path ?>privacy-settings.php">Privacy Settings</a></li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
