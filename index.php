@@ -37,6 +37,10 @@ if (isset($_SESSION['logged-in']) && $_SESSION['logged-in']) {
             <img src="assets/images/macaron-screen3.jpg" class="slide-image image3">
         </div>
         <a class="btn" href="store.php" role="button" id = "shop-button">Shop now!</a>
+<<<<<<< HEAD
+        <!-- <img src="assets/images/logo.png" id="logo-index"> -->
+=======
+>>>>>>> 61f2f701e7d990dcec0efbd237578df3e7cd60f2
     </section>
     
     <!--Divider seperator-->
@@ -128,7 +132,46 @@ if (isset($_SESSION['logged-in']) && $_SESSION['logged-in']) {
         <a class="btn storepage" href="store.php" role="button">See more</a>
         </div>
         </section>
+<<<<<<< HEAD
+            
+            
+        <div class="divider-container">
+            <div class="divider-line"> <i class="fa-solid fa-star divider-star"></i> </div>
+        </div>
+    
 
 
+           <!--About page-->
+        <section id = "about" class="min-vh-80 d-flex flex-column justify-content-center align-items-center text-center text-purple position-relative">
+             <h2 class = "index-header">Our story</h2>
+               <div class="container mt-5 mb-5">
+              <!-- <div class="card shadow-sm p-4 rounded-3"> -->
+                <p>Fleur Blanchet is an aspiring macaron shop owner and a passionate student who began pursuing her love for technology in 2017.
+                   She enrolled at Camosun College to study coding, following her dream of working in the tech industry.
+                   During her time there, she met many inspiring people, both students and teachers, who had a lasting impact on her journey.
+                </p>
+                <p>As a student, Fleur also discovered a deep love for cooking, particularly baking.
+                   She fell in love with a delicate treat from her hometown of Montreal, Québec: the macaron.
+                   Fleur would often bake and share her creations with peers and instructors, taking special flavour requests and dreaming of one day selling them beyond the campus.
+                </p>
+                <p>By the end of her program, however, Fleur realized that coding wasn't where her heart truly was.
+                   Instead, she decided to return home and pursue her passion for making macarons.
+                   In honour of her time and memories at Camosun, she launched a market stand in the summer of 2019, featuring student and teacher-inspired flavours as part of her Camosun-themed macaron collection.
+                   The stand quickly gained popularity with both locals and tourists in Montreal.
+                </p>
+                <p>Longing to return to Victoria, Fleur saved up and moved back in early July of 2021.
+                   She reconnected with old friends and former teachers, sharing stories of her growing business.
+                   With their encouragement and support, she was able to open her first brick-and-mortar macaron shop in 2024.
+                </p>
+                <p>Today, her business continues to thrive, and as of July 1st, 2025, her online store has officially launched, bringing her signature, memory-filled macarons to even more people. 
+                </p>
+            <!-- </div> -->
+           </div>
+        </section>
+
+=======
+
+
+>>>>>>> 61f2f701e7d990dcec0efbd237578df3e7cd60f2
 </body>
 <?php include 'includes/footer.php'; ?>
