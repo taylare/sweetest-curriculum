@@ -73,6 +73,15 @@ while ($row = mysqli_fetch_assoc($result)) {
 // - $total holds the full price total
 // - $total_quantity tells us how many items are in the cart
 
+//grabbing user info to check if they've accepted the privacy agreement:
+$sqlPrivacy = "SELECT privacyAccepted FROM users WHERE user_id = $user_id";
+$privacyResult = mysqli_query($dbc, $sqlPrivacy);
+
+$privacyAccepted = false;
+if ($privacyResult && mysqli_num_rows($privacyResult) > 0) {
+    $privacyAccepted = (bool)mysqli_fetch_assoc($privacyResult)['privacyAccepted'];
+}
+
 ?>
 
 <body class="cart-body">
@@ -83,7 +92,7 @@ while ($row = mysqli_fetch_assoc($result)) {
       <div class="toast show align-items-center delete-toast shadow-sm" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="3000">
         <div class="d-flex">
           <div class="toast-body">
-            <?= htmlspecialchars($_SESSION['cart_flash']) ?>
+            <?= ($_SESSION['cart_flash']) ?>
           </div>
           <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
@@ -103,7 +112,11 @@ while ($row = mysqli_fetch_assoc($result)) {
     <?php else: ?>
       <!-- show cart table if there are items -->
       <h2 class="cart-title">Your Shopping Cart</h2>
+<<<<<<< HEAD
     <div class = "table-responsive">
+=======
+    <div class="table-responsive-sm" id="cart-table">
+>>>>>>> 61f2f701e7d990dcec0efbd237578df3e7cd60f2
       <table class="cart-table w-100">
         <tbody>
           <?php foreach ($cart_items as $item): 
@@ -112,7 +125,7 @@ while ($row = mysqli_fetch_assoc($result)) {
           <tr data-product-id="<?= $item['product_id'] ?>">
             <!-- product image and name -->
             <td class="d-flex align-items-center" style="flex: 1;">
-              <img src="assets/images/<?= htmlspecialchars($item['imageURL']) ?>" alt="<?= htmlspecialchars($item['productName']) ?>">
+               <a href="item-view.php?id=<?= $item['product_id'] ?>"><img src="assets/images/<?= htmlspecialchars($item['imageURL']) ?>" alt="<?= htmlspecialchars($item['productName']) ?>"></a>
               <div class="ms-3">
                 <div><strong><?= htmlspecialchars($item['productName']) ?></strong></div>
                 <div style="font-size: 0.9rem;">$<?= number_format($item['price'], 2) ?></div>
@@ -123,10 +136,9 @@ while ($row = mysqli_fetch_assoc($result)) {
             <td id = "quanity-control-width">
               <form action="update-cart.php" method="post" class="d-flex align-items-center justify-content-center gap-2">
                 <input type="hidden" name="product_id" value="<?= $item['product_id'] ?>">
-                <button type="button" class="cart-btn-decrease">−</button>
+                <button type="submit" class="cart-btn-decrease">−</button>
                 <input type="number" name="quantity" value="<?= $item['quantity'] ?>" min="1" class="quantity-input" readonly>
-                <button type="button" class="cart-btn-increase">+</button>
-                <button type="submit" class="btn-update">✔</button>
+                <button type="submit" class="cart-btn-increase">+</button>
               </form>
             </td>
 
@@ -181,22 +193,37 @@ while ($row = mysqli_fetch_assoc($result)) {
         ?>
       </div>
 
-
       <!-- total and checkout area -->
       <div class="cart-total-wrapper">
         <div class="mt-4 text-center">
           <label class="form-label fw-semibold">macarons in cart: <?= $total_quantity ?>/10</label><br>
           <p class="cart-total">total: $<?= number_format($total, 2) ?></p>
-      
+
 
           <?php if ($total_quantity >= 10): ?>
-            <a href="order.php" class="cart-checkout-btn">proceed to checkout</a>
+          <form action="order-receipt.php" method="post">
+            <?php if ($privacyAccepted): ?>
+                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="pk_test_51RYYoTD0zBi1autjomMiZbNoqGQWyYbNTinew7qeChBt733LegOIe971T543i3ckVULQGLMhsSVfq4Sp2TvbW47K00IOAmWaLk"
+                  data-description="<?php echo 'Payment Checkout'; ?>"
+                  data-amount="<?php echo $total*100; ?>"
+                  data-locale="auto"></script>
+            <?php else: ?>
+              <p class="cart-note"><a target="_blank" href="privacy-settings.php">Privacy Agreement</a> must be accepted before checking out.</p>
+            <?php endif; ?>
+            <input type="hidden" name="totalamt" value="<?php echo $total*100; ?>" />
+          </form>
           <?php else: ?>
             <p class="cart-note">you need at least 10 macarons to place an order.</p>
           <?php endif; ?>
         </div>
+           <!-- clear cart button -->
+          <form action="clear-cart.php" method="post" class="d-inline">
+            <button type="submit" class="cart-clear-btn mt-3">clear cart</button>
+          </form>
       </div>
     <?php endif; ?> <!-- closes if cart has items -->
+    
     
   </div> <!-- closes .container -->
 

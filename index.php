@@ -37,7 +37,10 @@ if (isset($_SESSION['logged-in']) && $_SESSION['logged-in']) {
             <img src="assets/images/macaron-screen3.jpg" class="slide-image image3">
         </div>
         <a class="btn" href="store.php" role="button" id = "shop-button">Shop now!</a>
+<<<<<<< HEAD
         <!-- <img src="assets/images/logo.png" id="logo-index"> -->
+=======
+>>>>>>> 61f2f701e7d990dcec0efbd237578df3e7cd60f2
     </section>
     
     <!--Divider seperator-->
@@ -129,6 +132,7 @@ if (isset($_SESSION['logged-in']) && $_SESSION['logged-in']) {
         <a class="btn storepage" href="store.php" role="button">See more</a>
         </div>
         </section>
+<<<<<<< HEAD
             
             
         <div class="divider-container">
@@ -165,5 +169,9 @@ if (isset($_SESSION['logged-in']) && $_SESSION['logged-in']) {
            </div>
         </section>
 
+=======
+
+
+>>>>>>> 61f2f701e7d990dcec0efbd237578df3e7cd60f2
 </body>
 <?php include 'includes/footer.php'; ?>

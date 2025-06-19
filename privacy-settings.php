@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $privacyAccepted = !empty($_POST['privacy']) ? 1 : 0;
 
     // make sure we update regardless of current state
-    $updateSQL = "UPDATE Users SET privacyAccepted = $privacyAccepted WHERE user_id = $user_id";
+    $updateSQL = "UPDATE users SET privacyAccepted = $privacyAccepted WHERE user_id = $user_id";
 
     if (mysqli_query($dbc, $updateSQL)) {
         if ($privacyAccepted) {
@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 // getting the current privacy setting from the database, so we can show whether the box is checked when the page loads
-$result = mysqli_query($dbc, "SELECT privacyAccepted FROM Users WHERE user_id = $user_id");
+$result = mysqli_query($dbc, "SELECT privacyAccepted FROM users WHERE user_id = $user_id");
 $user = mysqli_fetch_assoc($result);
 $currentPrivacy = $user['privacyAccepted'] ?? 0; // fallback to 0 if not set
 ?>

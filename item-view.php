@@ -1,6 +1,14 @@
  <?php 
         include 'includes/header.php';
         include 'database/db.php';
+
+        //storing user_id to use for the admin check to be able to delete reviews.
+        $user_id = null;
+
+        if (isset($_SESSION['user_id'])) {
+            $user_id = (int)$_SESSION['user_id'];
+        }
+
         // checks to make sure product id exists beforehand when the item is clicked on from store view
         if (isset($_GET['id'])) {
             // set product id variable to query for product information to display in the page
@@ -30,11 +38,11 @@
 // sql query to get reviews for specific product
 // & joining tables to show username for each review
 $review_sql = "
-  SELECT r.comment, r.stars, u.username
-  FROM reviews r
-  JOIN users u ON r.user_id = u.user_id
-  WHERE r.product_id = $productid
-";
+    SELECT r.comment, r.stars, r.user_id, r.product_id, u.username, u.isAdmin
+    FROM reviews r
+    JOIN users u ON r.user_id = u.user_id
+    WHERE r.product_id = $productid
+    ";
 
 // running the sql query
 $review_result = mysqli_query($dbc, $review_sql);
@@ -64,11 +72,22 @@ if ($review_result && mysqli_num_rows($review_result) > 0) {
     $average_stars = 0;
 }
 
+//user can delete reviews:
+$isAdmin = false;
+if ($user_id) {
+    $admin_check = mysqli_query($dbc, "SELECT isAdmin FROM users WHERE user_id = $user_id");
+    if ($admin_check && $row = mysqli_fetch_assoc($admin_check)) {
+        $isAdmin = (bool)$row['isAdmin'];
+    }
+}
+
+
+
 
 #---------------------------------------------------#
 #---------get 9 recommended products:---------------#
 // define a list of product IDs we want to recommend
-$recommended_ids = [1, 3, 5, 6, 21, 2, 7, 34, 8];
+$recommended_ids = [1, 3, 5, 31, 21, 2, 7, 34, 8];
 
 // create a new array and remove the current product from the list (so it doesn't recommend itself)
 $filtered_ids = [];
@@ -154,7 +173,7 @@ if ($recommend_result) {
                 <h5 class="text-center mb-4">you may also like...</h5>
 
                 <!-- start of bootstrap carousel -->
-                <div id="multiItemCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div id="multiItemCarousel" class="rec-carousel carousel slide" data-bs-ride="carousel">
 
                     <!-- all carousel slides go inside here -->
                     <div class="carousel-inner">
@@ -171,8 +190,9 @@ if ($recommend_result) {
                         <?php for ($i = 0; $i < count($recommended_products); $i += 3): ?>
                             <!-- set the first carousel item to 'active' for visibility -->
                             <div class="carousel-item <?= $i === 0 ? 'active' : '' ?>">
+                    
                                 <!-- row of 3 product cards -->
-                                <div class="d-flex justify-content-center gap-4">
+                                    <div class="d-flex justify-content-center gap-4">
                                     <?php for ($j = $i; $j < $i + 3 && $j < count($recommended_products); $j++): ?>
                                         <!-- individual product card -->
                                         <a href="item-view.php?id=<?= $recommended_products[$j]['product_id'] ?>" class="rec-card text-decoration-none text-dark text-center p-2">
@@ -208,7 +228,9 @@ if ($recommend_result) {
             </div>
         <?php endif; ?>
 
-
+        <div class="divider-container">
+            <div class="divider-line"> <i class="fa-solid fa-star divider-star"></i> </div>
+        </div>
 
         <!-------------------------->
         <!-----reviews section------>
@@ -221,18 +243,23 @@ if ($recommend_result) {
             <?php else: ?>
                 <!-- loop through each review in the reviews array -->
                 <?php foreach ($reviews as $rev): ?>
-                    <!-- container for each individual review -->
-                    <div class="review-box d-flex align-items-start gap-3 mb-3">
+                    <div class="review-box d-flex align-items-start justify-content-between gap-3 mb-3">
                         <div>
-                            <!-- show the username of the person who wrote the review -->
                             <strong><?= htmlspecialchars($rev['username']) ?></strong>
-                            <!-- show star rating using emoji stars-->
                             <div><?= str_repeat("⭐", $rev['stars']) ?> (<?= $rev['stars'] ?>/5)</div>
-                            <!-- show the comment the user wrote -->
                             <p class="mb-0"><?= htmlspecialchars($rev['comment']) ?></p>
                         </div>
+
+                        <?php if ($isAdmin): ?>
+                            <div>
+                                <a href="delete-review.php?product_id=<?= $productid ?>&user_id=<?= $rev['user_id'] ?>" data-label="delete" class="cart-trash-btn">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </a>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 <?php endforeach; ?>
+
             <?php endif; ?>
         </div>
 

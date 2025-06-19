@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //check if email or password fields were empty
     if (empty($_POST['username']) || empty($_POST['password'])) {
         // save error message in a session variable temporarily
-        $_SESSION['login_error'] = "Please enter both email and password.";
+        $_SESSION['login_error'] = "Please enter both username and password.";
         header("Location: login.php");
         exit;
     } else {

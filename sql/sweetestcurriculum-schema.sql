@@ -6,7 +6,8 @@ CREATE TABLE users (
     username VARCHAR(50) NOT NULL,
     userEmail VARCHAR(100) NOT NULL,
     isAdmin BOOLEAN NOT NULL DEFAULT FALSE,
-    userPassword VARCHAR(100) NOT NULL
+    userPassword VARCHAR(100) NOT NULL,
+    privacyAccepted BOOLEAN DEFAULT FALSE;
 );
 
 -- PRODUCTS
@@ -186,6 +187,78 @@ INSERT INTO Product_Category (product_id, category_id) VALUES
 INSERT INTO cart (user_id, product_id, quantity) VALUES
 (2, 1, 2),
 (2, 3, 1);
+
+
+-- ORDER HISTORY
+INSERT INTO order_history (order_id, user_id, created_at) VALUES
+(1, 15, '2025-06-01 13:20:00'),   -- Hector
+(2, 7, '2025-06-02 09:45:00'),   -- Joanne
+(3, 11, '2025-06-03 18:30:00'),  -- Lewis
+(4, 9, '2025-06-04 11:00:00'),   -- Violet
+(5, 20, '2025-06-05 21:10:00');  -- Lebron
+
+-- ORDER ITEMS
+INSERT INTO order_items (order_id, product_id, quantity, price) VALUES
+
+-- Order 1 (Hector)
+(1, 1, 2, 3.50),
+(1, 3, 1, 3.50),
+(1, 5, 2, 3.50),
+(1, 6, 1, 3.50),
+(1, 8, 3, 3.50),
+(1, 10, 2, 3.50),
+(1, 11, 1, 3.50),
+(1, 13, 2, 3.50),
+(1, 14, 1, 3.50),
+(1, 15, 1, 3.50),
+
+-- Order 2 (Joanne)
+(2, 2, 1, 3.50),
+(2, 4, 2, 3.50),
+(2, 7, 2, 3.50),
+(2, 9, 1, 3.50),
+(2, 12, 1, 3.50),
+(2, 16, 3, 3.50),
+(2, 17, 1, 3.50),
+(2, 18, 1, 3.50),
+(2, 20, 2, 3.50),
+(2, 21, 1, 3.50),
+
+-- Order 3 (Lewis)
+(3, 3, 1, 3.50),
+(3, 5, 1, 3.50),
+(3, 6, 1, 3.50),
+(3, 7, 2, 3.50),
+(3, 13, 1, 3.50),
+(3, 15, 1, 3.50),
+(3, 22, 2, 3.50),
+(3, 23, 1, 3.50),
+(3, 24, 1, 3.50),
+(3, 25, 1, 3.50),
+
+-- Order 4 (Voilet)
+(4, 1, 1, 3.50),
+(4, 2, 1, 3.50),
+(4, 4, 2, 3.50),
+(4, 8, 1, 3.50),
+(4, 10, 2, 3.50),
+(4, 14, 1, 3.50),
+(4, 19, 1, 3.50),
+(4, 21, 2, 3.50),
+(4, 26, 1, 3.50),
+(4, 27, 1, 3.50),
+
+-- Order 5 (Lebron)
+(5, 6, 2, 3.50),
+(5, 11, 1, 3.50),
+(5, 12, 1, 3.50),
+(5, 13, 1, 3.50),
+(5, 15, 2, 3.50),
+(5, 20, 1, 3.50),
+(5, 24, 2, 3.50),
+(5, 28, 1, 3.50),
+(5, 29, 1, 3.50),
+(5, 30, 1, 3.50);
 
 
 --TEST QUERIES: -----------------------------------------------------------

@@ -40,10 +40,11 @@
        We reserve the right to update this Privacy Policy at any time. 
        Continued use of our site after changes are posted account for your acceptance of the updated policy. 
       </p>
-
+  <?php if (isset($_SESSION['user_id'])):?>
       <div class="text-center mt-4">
         <a href="privacy-settings.php" class="privacy-btn">View Your Privacy Settings</a>
       </div>
+  <?php endif; ?>
     </div>
   </div>
 
