@@ -112,11 +112,8 @@ if ($privacyResult && mysqli_num_rows($privacyResult) > 0) {
     <?php else: ?>
       <!-- show cart table if there are items -->
       <h2 class="cart-title">Your Shopping Cart</h2>
-<<<<<<< HEAD
     <div class = "table-responsive">
-=======
     <div class="table-responsive-sm" id="cart-table">
->>>>>>> 61f2f701e7d990dcec0efbd237578df3e7cd60f2
       <table class="cart-table w-100">
         <tbody>
           <?php foreach ($cart_items as $item): 
@@ -223,8 +220,7 @@ if ($privacyResult && mysqli_num_rows($privacyResult) > 0) {
           </form>
       </div>
     <?php endif; ?> <!-- closes if cart has items -->
-    
-    
+  </div> 
   </div> <!-- closes .container -->
 
   <!-- quantity button functionality -->

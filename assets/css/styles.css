@@ -85,7 +85,10 @@ a .view-cart-link:hover {
     color: #FCF3FF;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> acf2e1d76ec758b339ead3ee15fbdba3d4692cc3
 /************************/
 /****** INDEX PAGE ******/
 /************************/
@@ -701,11 +704,14 @@ body.index-body {
 
 /* Image styling */
 .dashboard-table img {
+<<<<<<< HEAD
 
   width: 30px;
   height: 30px;
   border-radius: 100%;
   border: 3px dashed var(--powderBlue);
+=======
+>>>>>>> acf2e1d76ec758b339ead3ee15fbdba3d4692cc3
   width: 50px;
   height: 50px;
   border-radius: 100%;
@@ -1362,23 +1368,33 @@ body.cart-body {
 /* image at top of card */
 .product-card-img {
   border-radius: 50%;
+<<<<<<< HEAD
 
   border: 3px dashed var(--powderBlue); 
 
   border: 3px solid var(--powderBlue); 
 
+=======
+  border: 3px solid var(--powderBlue); 
+>>>>>>> acf2e1d76ec758b339ead3ee15fbdba3d4692cc3
   width: 80px;
   height: 80px;
   object-fit: cover; 
   display: block;
   margin: 0.75rem auto 0.75rem; 
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05); 
+<<<<<<< HEAD
 
+=======
+>>>>>>> acf2e1d76ec758b339ead3ee15fbdba3d4692cc3
 }
 
 img.card-img-top.product-card-img {
   border: 3px solid var(--powderBlue); 
+<<<<<<< HEAD
 
+=======
+>>>>>>> acf2e1d76ec758b339ead3ee15fbdba3d4692cc3
 }
 
 
@@ -1408,9 +1424,12 @@ img.card-img-top.product-card-img {
 .storepage,
 .add-to-cart-btn,
 .view-product-btn {
+<<<<<<< HEAD
 
   font-family: 'Baloo 2', cursive; 
 
+=======
+>>>>>>> acf2e1d76ec758b339ead3ee15fbdba3d4692cc3
   font-size: 0.7125rem;
   padding: 0.3rem 0.825rem;
   border: 2px solid #fff6f8;
@@ -1793,7 +1812,10 @@ img.card-img-top.product-card-img {
   margin: 0;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> acf2e1d76ec758b339ead3ee15fbdba3d4692cc3
 /*-------------------------------------*/
 /* mobile view for carousel & reviews */
 /*------------------------------------*/
@@ -1893,7 +1915,10 @@ img.card-img-top.product-card-img {
       margin: 0;
     }
   }
+<<<<<<< HEAD
 
+=======
+>>>>>>> acf2e1d76ec758b339ead3ee15fbdba3d4692cc3
 /*=======================*/
 /*  Landscape Tablet/PC  */
 /*=======================*/
@@ -1901,6 +1926,7 @@ img.card-img-top.product-card-img {
 .cart-table tbody tr {
   flex-direction: row;
   align-items: center;
+<<<<<<< HEAD
 
 }
 
@@ -2050,6 +2076,8 @@ min-width: 60px;
 }
 
 
+=======
+>>>>>>> acf2e1d76ec758b339ead3ee15fbdba3d4692cc3
 }
 
 
@@ -2236,7 +2264,10 @@ min-width: 60px;
     max-height: 375px;
   }
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> acf2e1d76ec758b339ead3ee15fbdba3d4692cc3
 
 /****************************************/
 /********** ORDER-HISTORY.PHP ***********/
@@ -2394,3 +2425,53 @@ min-width: 60px;
 
 /**end of order-history.php**/
 
+<<<<<<< HEAD
+=======
+
+/**dropdown css**/
+/* Base dropdown style */
+.dropdown-menu {
+  background-color: var(--plum);
+  padding: 0.4rem 0;
+  min-width: 180px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  display: block;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Show dropdown with smooth transition */
+.dropdown-menu.show {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Dropdown item */
+.dropdown-item {
+  color: var(--lavendarBlush);
+  padding: 0.55rem 1rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dropdown-item:hover {
+  color: var(--teaGreen);
+  background-color: var(--plum);
+}
+
+/* for dropdown inside offcanvas (mobile) */
+.offcanvas .dropdown-menu {
+  position: static;
+  transform: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  box-shadow: none;
+}
+
+/**end of dropdown css**/
+>>>>>>> acf2e1d76ec758b339ead3ee15fbdba3d4692cc3
