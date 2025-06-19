@@ -45,18 +45,32 @@
 
   // make sure the data was uploaded to the server before displaying a receipt
   if ($result) {
-    // query that grabs the 
-    $orderDetailsSQL = 'SELECT 
-                            (SELECT MAX(order_id) FROM order_history WHERE user_id = $user_id) AS "order id",
+    // query that grabs the order from the database
+    $orderDetailsSQL = "SELECT 
+                            (SELECT MAX(order_id) FROM order_history WHERE user_id = $user_id) AS \"order id\",
                             c.product_id,
                             c.quantity,
                             p.price
                             FROM cart c, users u
                             JOIN products p ON c.product_id = p.product_id
-                            WHERE c.user_id = $user_id;'
+                            WHERE c.user_id = $user_id;";
     
+    // create an empty array to store the order information into
+    $orderDetails = [];
+
+    // run the query and store the results of each row and column
+    $orderDetailsResult = mysqli_query($dbc, $orderDetailsSQL);
+
+    // iterate over the Result and store it into the orderDetails array
+    while ($row = mysqli_fetch_assoc($orderDetailsResult)) {
+        $orderDetails = $row;
+    }
+
     
   }
+
+  
+
 ?>
 
 <?php include 'includes/footer.php'; ?>

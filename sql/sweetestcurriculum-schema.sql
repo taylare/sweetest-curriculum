@@ -1,4 +1,4 @@
----DROP TABLE IF EXISTS order_items, order_history, reviews, cart, product_category, categories, products, users;
+DROP TABLE IF EXISTS order_items, order_history, reviews, cart, product_category, categories, products, users;
  
 -- USERS
 CREATE TABLE users (
@@ -7,7 +7,7 @@ CREATE TABLE users (
     userEmail VARCHAR(100) NOT NULL,
     isAdmin BOOLEAN NOT NULL DEFAULT FALSE,
     userPassword VARCHAR(100) NOT NULL,
-    privacyAccepted BOOLEAN DEFAULT FALSE;
+    privacyAccepted BOOLEAN DEFAULT FALSE
 );
 
 -- PRODUCTS
@@ -261,15 +261,15 @@ INSERT INTO order_items (order_id, product_id, quantity, price) VALUES
 (5, 30, 1, 3.50);
 
 
---TEST QUERIES: -----------------------------------------------------------
-----------------------------------------------------------------------------
----simulating purchase: moving to order_history + receipt-------------------
-------------------------------------------------------------------------------
-#--user adds macarons to their cart:
+-- TEST QUERIES: -----------------------------------------------------------
+
+-- simulating purchase: moving to order_history + receipt --
+
+#-- user adds macarons to their cart:
 INSERT INTO cart (user_id, product_id, quantity) 
 VALUES (3, 1, 2), (3, 3, 1);
 
-#--view cart
+#-- view cart
 SELECT c.user_id, p.product_id, p.productName, p.price, c.quantity, (p.price * c.quantity) AS total_price
 FROM cart c
 JOIN products p ON c.product_id = p.product_id
@@ -294,7 +294,7 @@ WHERE c.user_id = 3;
 DELETE FROM cart
 WHERE user_id = 3;
 
---receipt:
+-- receipt:
 SELECT 
     oh.order_id,
     u.username AS customer_name,
@@ -311,9 +311,9 @@ WHERE oh.user_id = 3
 ORDER BY oh.order_id DESC;
 
 
-----------------------------------------------------------
-------------------leaving a review------------------------
-----------------------------------------------------------
+
+-- leaving a review --
+
 
 UPDATE order_items
 SET order_id = 3
@@ -359,7 +359,7 @@ JOIN order_history oh ON oi.order_id = oh.order_id
 WHERE oh.user_id = 10 AND oi.product_id = 4
 LIMIT 1;
 
---view all reviews by userid 3
+-- view all reviews by userid 3
 SELECT 
     r.user_id,
     u.username,
@@ -371,7 +371,7 @@ JOIN users u ON r.user_id = u.user_id
 JOIN products p ON r.product_id = p.product_id
 WHERE r.user_id = 3;
 
---view all reviews of a specific product--
+-- view all reviews of a specific product--
 SELECT 
     r.product_id,
     p.productName,
@@ -401,9 +401,9 @@ JOIN product_category pc ON p.product_id = pc.product_id
 JOIN categories c ON pc.category_id = c.category_id
 WHERE c.category_name = 'Chocolate';
 
----------------------------------------------------------------
--------------display products by keyword-----------------------
----------------------------------------------------------------
+
+-- display products by keyword --
+
 SELECT 
     p.product_id,
     p.productName,
@@ -415,11 +415,9 @@ WHERE p.productName LIKE '%choco%'
    OR p.description LIKE '%choco%';
 
 
------------------------------------------------------------------
---------------------------admin queries--------------------------
------------------------------------------------------------------
+-- admin queries --
 
---------------add a new macaron product -------------------------
+-------------- add a new macaron product -------------------------
 
 INSERT INTO products (productName, price, imageURL, description)
 VALUES ('Matcha Macaron', 3.19, 'matcha.jpg', 'Green Tea Matcha filling');
@@ -427,7 +425,7 @@ VALUES ('Matcha Macaron', 3.19, 'matcha.jpg', 'Green Tea Matcha filling');
 SELECT * FROM products;
 
 
-------------------editing products-----------------------------
+-- editing products --
 UPDATE products
 SET
     productName = 'Lemon Macaron',
@@ -438,7 +436,7 @@ WHERE product_id = 4;
 
 SELECT * FROM products;
 
-----------------------deleting products-------------------------
+-- deleting products -------------------------
 DELETE FROM product_category
 WHERE product_id = 4;
 
@@ -449,11 +447,10 @@ SELECT * FROM products;
 
 
 
---------------------------------------------------------------------------
---------------------------cart functionality:----------------------------
---------------------------------------------------------------------------
+-- cart functionality: ----------------------------
 
---------------------------Add to cart-------------------------------------
+
+#----------------------- Add to cart -------------------------------------
 
 INSERT INTO cart (user_id, product_id, quantity)
 VALUES (5, 1, 1), (5, 3, 5), (5, 2, 2)
@@ -473,7 +470,7 @@ JOIN products p ON c.product_id = p.product_id
 WHERE c.user_id = 5;
 
 
---------------remove specific item from cart-----------------
+#--------------remove specific item from cart-----------------
 
 DELETE FROM cart
 WHERE user_id = 5 AND product_id = 2;
@@ -491,7 +488,7 @@ JOIN products p ON c.product_id = p.product_id
 WHERE c.user_id = 5;
 
 
-----------------adjust quantity-----------------------------
+#----------------adjust quantity-----------------------------
 #--add
 UPDATE cart
 SET quantity = quantity + 1
@@ -504,7 +501,7 @@ WHERE user_id = 5 AND product_id = 3
   AND quantity > 1;  -- Prevent negative quantity
 
 
------ Show cart items for user 5-----------------
+#----- Show cart items for user 5-----------------
 #--view changes:
 SELECT 
     c.user_id,
@@ -517,12 +514,19 @@ FROM cart c
 JOIN products p ON c.product_id = p.product_id
 WHERE c.user_id = 5;
 
-----------------------------------------------------------
----------------- new user registration--------------------
-----------------------------------------------------------
+#----------------------------------------------------------
+#---------------- new user registration--------------------
+#----------------------------------------------------------
 INSERT INTO users (username, userEmail, isAdmin, userPassword)
 VALUES ('NewCustomer', 'new@customer.com', FALSE, 'pass123');
 
-SELECT * FROM users;
 
+SELECT 
+    (SELECT MAX(order_id) FROM order_history WHERE user_id = 5) AS "order id",
+    c.product_id AS "product id",
+    c.quantity AS "product quantity",
+    p.price
+FROM cart c
+JOIN products p ON c.product_id = p.product_id
+WHERE c.user_id = 5;
 
