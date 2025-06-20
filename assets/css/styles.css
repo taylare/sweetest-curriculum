@@ -2131,9 +2131,9 @@ img.card-img-top.product-card-img {
 
 /* Modal Styling */
 .review-modal .modal-content {
-  background-color: var(--teaGreen);
+  background-color: var(--lavendarBlush);
   border-radius: 20px;
-  border: 5px solid #7cd692;
+  border: 5px solid var(--powderBlue);
 }
 
 .review-modal .modal-title {
@@ -2148,20 +2148,20 @@ img.card-img-top.product-card-img {
 .review-input,
 .review-textarea {
   border-radius: 10px;
-  border: 1px solid #88c590;
+  border: 1px solid var(--powderBlue);
   background-color: #fff8fb;
 }
 
 .review-close {
-  background-color: #6cb47d;
+  background-color: var(--powderBlue);
   border-radius: 50%;
   padding: 5px;
 }
 
 
 .review-toast {
-  background: linear-gradient(to right, var(--teaGreen), #d5ffd4);
-  border-color: var(--teaGreen);
+  background: linear-gradient(to right, var(--powderBlue), #d5ffd4);
+  border-color: var(--powderBlue);
   border-radius: 1rem;
   color: #000000;
   font-weight: 500;
