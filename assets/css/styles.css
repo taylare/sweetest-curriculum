@@ -2107,6 +2107,19 @@ img.card-img-top.product-card-img {
   background-color: #fff;
 }
 
+.order-history-button-container {
+  display: flex;
+  flex-direction: column;
+  font-size: .5rem;
+  text-align: center;
+  align-items: center;
+}
+
+.order-history-button-container button {
+  margin: 10px;
+}
+
+
 .order-history-details {
   flex-grow: 1;
 }
@@ -2128,6 +2141,23 @@ img.card-img-top.product-card-img {
   font-style: italic;
 }
 
+@media (max-width: 1000px) {
+  .order-history-button-container button {
+    font-size: .8rem;
+    padding: 2px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .order-history-button-container a {
+    font-size: .8rem;
+    padding: 8px;
+    text-align: center;
+    width: 100%;
+    margin-top: 6px;
+  }
+}
 
 /* Modal Styling */
 .review-modal .modal-content {

@@ -81,13 +81,15 @@ if ($order_result) {
                                 <p><small>Customer ID: <?= htmlspecialchars($user_id) ?></small></p>
                             </div>
 
-                            <!-- button to open the review form modal -->
-                            <button class="btn review-submit-btn" 
-                                    data-bs-toggle="modal" 
-                                    data-bs-target="#reviewModal<?= $product['product_id'] ?>">
-                                📝 Leave a Review
-                            </button>
-                            <div><a href="orders/order_<?= $order_id ?>" download class="review-submit-btn">Download Receipt (.txt)</a></div>
+                            <div class="order-history-button-container">
+                                <!-- button to open the review form modal -->
+                                <button class="btn review-submit-btn" 
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#reviewModal<?= $product['product_id'] ?>">
+                                    📝 Leave a Review
+                                </button>
+                                <div><a href="orders/order_<?= $order_id ?>" download class="review-submit-btn"> Download <i class="fa-solid fa-file-arrow-down"></i> </a> </div>
+                            </div>
                             
                         </div>
 
