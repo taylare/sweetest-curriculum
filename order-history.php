@@ -70,10 +70,9 @@ if ($order_result) {
                     <?php foreach ($items as $product): ?>
                         <div class="order-history-border">
                             <!-- show the product image -->
-                            <img src="assets/images/<?= htmlspecialchars($product['imageURL']) ?>" 
-                                 alt="<?= htmlspecialchars($product['productName']) ?>" 
-                                 class="order-history-img">
-
+                            <a href="item-view.php?id=<?= $product['product_id'] ?>">
+                                <img src="assets/images/<?= htmlspecialchars($product['imageURL']) ?>" alt="<?= htmlspecialchars($product['productName']) ?>" class="order-history-img">
+                            </a>
                             <!-- show product details like name, quantity, price, and order date -->
                             <div class="order-history-details">
                                 <h5><?= htmlspecialchars($product['productName']) ?></h5>
@@ -88,6 +87,8 @@ if ($order_result) {
                                     data-bs-target="#reviewModal<?= $product['product_id'] ?>">
                                 📝 Leave a Review
                             </button>
+                            <div><a href="orders/order_<?= $order_id ?>" download class="review-submit-btn">Download Receipt (.txt)</a></div>
+                            
                         </div>
 
                         <!-- modal popup to submit a review for this product -->
@@ -132,6 +133,7 @@ if ($order_result) {
 
                                             <!-- submit review button -->
                                             <button type="submit" class="btn review-submit-btn-modal w-50 mt-2">Submit Review</button>
+                            
                                         </form>
                                     </div>
 

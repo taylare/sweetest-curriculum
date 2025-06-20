@@ -373,7 +373,7 @@ color: var(--plum);
   top: 20vh;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 9999; 
+  z-index: 800; 
   width: 600px;
   height: 600px;
   filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
@@ -2283,13 +2283,19 @@ img.card-img-top.product-card-img {
 .receipt-body {
   background-color: var(--lavendarBlush);
 }
+
+.receipt-header {
+margin-top: 2%;
+}
+
+
 #order-receipt-container {
   max-width: 900px;
   margin: 5% auto;
   padding: 2rem;
   border: 3px dashed var(--powderBlue);
   border-radius: 20px;
-  background-color: #fff9fb;
+  background-color: #f1ffec;
   color: var(--plum);
   font-family: 'Segoe UI', sans-serif;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -2307,9 +2313,9 @@ img.card-img-top.product-card-img {
   gap: 1.2rem;
   margin-bottom: 1.5rem;
   padding: 0.5rem 1rem;
-  border-radius: 12px;
+  border-radius: 8px;
   background-color: #fff9fb;
-  border: 2px solid var(--roseQuartz);
+  border: 2px dashed var(--powderBlue);
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 

@@ -164,7 +164,7 @@ if ($file) {
 ?>
 
 <body class="receipt-body">
-  <h3 class="text-center">Your Order Has Been Confirmed!</h3>
+  <h3 class="text-center receipt-header">Your Order Has Been Confirmed!</h3>
   <div id="order-receipt-container">
     <p>Order id: <?= htmlspecialchars($orderID) ?></p>
     <p>Username: <?= htmlspecialchars($user) ?></p>
