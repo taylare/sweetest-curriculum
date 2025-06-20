@@ -11,7 +11,7 @@ $base_path = '';
 if (isset($_SESSION['logged-in']) && $_SESSION['logged-in']) {
     // store the username
     $user = htmlspecialchars($_SESSION['username']);
-    $_SESSION['login_flash'] = "Hello, $user!";   
+    $_SESSION['login_flash'] = "Welcome Back, $user!";   
 }
 ?>
 <!--Log in popup with name-->

@@ -26,10 +26,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (mysqli_query($dbc, $updateSQL)) {
         if ($privacyAccepted) {
-            $message = "you have accepted the privacy terms. you may now make purchases.";
-            $message_type = 'success';
+            $message = "🛡️ You have accepted the privacy terms. You may now make purchases.";
+            $message_type = 'info';
         } else {
-            $message = "you have opted out of the privacy terms. you will not be able to make purchases.";
+            $message = "🚫 You have opted out of the privacy terms. You will not be able to make purchases.";
             $message_type = 'warning';
         }
     } else {
@@ -49,7 +49,7 @@ $currentPrivacy = $user['privacyAccepted'] ?? 0; // fallback to 0 if not set
 
   <!-- main container with spacing -->
   <div class="container mt-5">
-    <h2 class="text-center">privacy settings</h2>
+    <h2 class="text-center">Privacy Settings</h2>
 
     <!-- show a message if we have one -->
     <?php if (!empty($message)): ?>
@@ -67,7 +67,7 @@ $currentPrivacy = $user['privacyAccepted'] ?? 0; // fallback to 0 if not set
         <input class="form-check-input" type="checkbox" id="privacy" name="privacy"
           <?= $currentPrivacy ? 'checked' : '' ?>>
         <label class="form-check-label" for="privacy">
-          i accept the <a href="privacy.php" target="_blank">privacy terms</a>.
+          I accept the <a href="privacy.php" target="_blank">privacy terms</a>.
         </label>
       </div>
 

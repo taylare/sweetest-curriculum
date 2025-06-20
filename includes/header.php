@@ -48,7 +48,6 @@
         <?php if (!empty($_SESSION['isAdmin'])): ?>
           <li class="nav-item"><a class="nav-link" href="<?= $base_path ?>admin/dashboard.php">Admin</a></li>
         <?php endif; ?>
-        <li class="nav-item"><a class="nav-link" href="<?= $base_path ?>logout.php">Logout</a></li>
 
         <!--dropdown for order-history & privacy setting-->
         <li class="nav-item dropdown">
@@ -58,6 +57,8 @@
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="settingsDropdown">
             <li><a class="dropdown-item" href="<?= $base_path ?>order-history.php">Order History</a></li>
             <li><a class="dropdown-item" href="<?= $base_path ?>privacy-settings.php">Privacy Settings</a></li>
+            <li><a class="dropdown-item" href="<?= $base_path ?>logout.php">Logout</a></li>
+
           </ul>
         </li>
 
