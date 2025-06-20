@@ -6,36 +6,39 @@
     <h2 class="text-center mb-4">Privacy Terms:</h2>
 
     <div class="card shadow-sm p-4 rounded-3">
+      
+
+      <h5 class="mt-4">Personal information</h5>
       <p>
-        lorem ipsum dolor sit amet, consectetur adipiscing elit. integer vitae justo eget magna fermentum dapibus. sed vitae sapien in nunc posuere pretium. fusce a commodo metus.
+       By using this website, creating an account, or completing a purchase, you agree to our collection, use, and storage of your personal information in agreement with this Privacy terms of agreement.
+       We may collect information such as your name, email address, mailing and billing addresses, payment details, order history, and preferences.
+       This data is used to process transactions, deliver products and improve our services.
       </p>
 
-      <h5 class="mt-4">1. lorem ipsum dolor</h5>
+      <h5 class="mt-4">Information Usage</h5>
       <p>
-        lorem ipsum dolor sit amet, consectetur adipiscing elit. vivamus ut arcu sed urna iaculis vestibulum. quisque sed quam ac mauris mattis fermentum. sed non magna eu velit rhoncus iaculis.
+      Your personal information is treated as confidential.
+      It will not be sold or shared with third parties for marketing purposes;
+      however, we may share your data with trusted service providers
+      (such as payment processors, shipping companies, or technical support providers)
+      solely for the purpose of fulfilling your orders and maintaining the site.
+      All partners are required to protect your information in compliance with applicable data protection laws.
       </p>
 
-      <h5 class="mt-4">2. sed ut perspiciatis unde</h5>
+     
+
+      <h5 class="mt-4">User rights</h5>
       <p>
-        sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. eaque ipsa quae ab illo inventore veritatis et quasi architecto.
+       You have the right to access, update, or delete your personal data at any time by contacting us. 
+       You may also withdraw your consent at any point throughout your usage on the site.
+       We take reasonable administrative and technical actions to secure your data against unauthorized access or misuse.
       </p>
 
-      <h5 class="mt-4">3. nemo enim ipsam voluptatem</h5>
-      <ul>
-        <li>nemo enim ipsam voluptatem quia voluptas</li>
-        <li>sed quia consequuntur magni dolores eos</li>
-        <li>qui ratione voluptatem sequi nesciunt</li>
-        <li>ut enim ad minima veniam</li>
-      </ul>
-
-      <h5 class="mt-4">4. ut labore et dolore</h5>
+      <h5 class="mt-4">Policy updates</h5>
       <p>
-        ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit.
-      </p>
-
-      <h5 class="mt-4">5. quis nostrud exercitation</h5>
-      <p>
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+       By checking the agreement box or proceeding with a purchase, you acknowledge that you have read, understood, and accepted these terms.
+       We reserve the right to update this Privacy Policy at any time. 
+       Continued use of our site after changes are posted account for your acceptance of the updated policy. 
       </p>
   <?php if (isset($_SESSION['user_id'])):?>
       <div class="text-center mt-4">
