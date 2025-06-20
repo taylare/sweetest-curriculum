@@ -203,7 +203,7 @@ if ($privacyResult && mysqli_num_rows($privacyResult) > 0) {
                 <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                   data-key="pk_test_51RYYoTD0zBi1autjomMiZbNoqGQWyYbNTinew7qeChBt733LegOIe971T543i3ckVULQGLMhsSVfq4Sp2TvbW47K00IOAmWaLk"
                   data-description="<?php echo 'Payment Checkout'; ?>"
-                  data-amount="<?php echo $total*100; ?>"
+                  data-amount="<?php echo $total * 100; ?>"
                   data-locale="auto"></script>
             <?php else: ?>
               <p class="cart-note"><a target="_blank" href="privacy-settings.php">Privacy Agreement</a> must be accepted before checking out.</p>
