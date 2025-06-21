@@ -88,7 +88,7 @@ if ($order_result) {
                                         data-bs-target="#reviewModal<?= $product['product_id'] ?>">
                                     📝 Leave a Review
                                 </button>
-                                <div><a href="orders/order_<?= $order_id ?>" download class="review-submit-btn"> Download <i class="fa-solid fa-file-arrow-down"></i> </a> </div>
+                                <div><a href="orders/order_<?= $order_id ?>" download class="review-submit-btn"> Receipt <i class="fa-solid fa-circle-down"></i></i> </a> </div>
                             </div>
                             
                         </div>

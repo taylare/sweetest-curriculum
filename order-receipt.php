@@ -144,6 +144,7 @@ if ($file) {
     // write order info and product details into the file
     $text = "Order #$orderID\n";
     $text .= "Username: $user\n";
+    $text .= "Email: $email \n";
     $text .= "Date: $formattedDate\n\n";
     $text .= "Items:\n";
 
@@ -164,33 +165,43 @@ if ($file) {
 ?>
 
 <body class="receipt-body">
-  <h3 class="text-center receipt-header">Your Order Has Been Confirmed!</h3>
-  <div id="order-receipt-container">
-    <p>Order id: <?= htmlspecialchars($orderID) ?></p>
-    <p>Username: <?= htmlspecialchars($user) ?></p>
-    <p>Order Placed: <?= htmlspecialchars($formattedDate) ?></p>
+  <div class="receipt-summary-wrapper">
+    <h2 class="receipt-summary-title">Receipt for Order #<?= htmlspecialchars($orderID) ?></h2>
+    <p class="receipt-summary-date"><strong>Date:</strong> <?= htmlspecialchars($formattedDate) ?></p>
 
-    <?php foreach ($products as $item): ?>
-      <div class="order-receipt-product">
-        <div id="order-receipt-image">
-          <img src="assets/images/<?= htmlspecialchars($item['image']) ?>" alt="<?= htmlspecialchars($item['name']) ?> Macaron">
-        </div>
-        <div class="order-receipt-text">
-          <h3><?= htmlspecialchars($item['name']) ?></h3>
-          <p>Price: $<?= htmlspecialchars($item['price']) ?></p>
-          <p>Ordered: <?= htmlspecialchars($item['qty']) ?></p>
-          <p>Total: $<?= number_format(($item['qty'] * $item['price']), 2) ?></p>
-        </div>
-      </div>
-    <?php endforeach; ?>
+    <div class="receipt-summary-customer">
+      <h4>Customer Details</h4>
+      <p><strong>Name:</strong> <?= htmlspecialchars($user) ?></p>
+      <p><strong>Email:</strong> <?= htmlspecialchars($email) ?></p>
+    </div>
 
-    <div id="order-receipt-total">
-      <p>Order Total: $<?= htmlspecialchars($amount) ?></p>
+    <table class="receipt-summary-table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($products as $item): ?>
+          <tr>
+            <td><?= htmlspecialchars($item['name']) ?></td>
+            <td><?= htmlspecialchars($item['qty']) ?></td>
+            <td>$<?= number_format($item['price'], 2) ?></td>
+            <td>$<?= number_format($item['price'] * $item['qty'], 2) ?></td>
+          </tr>
+        <?php endforeach; ?>
+      </tbody>
+    </table>
+
+    <div class="receipt-summary-total">
+      <p><strong>Order Total:</strong> $<?= htmlspecialchars($amount) ?></p>
     </div>
 
     <div class="text-center mt-3">
-      <!-- this link lets the user download the txt version of their receipt -->
-      <a href="<?= $filename ?>" download class="review-submit-btn">Download Receipt (.txt)</a>
+      <a href="<?= $filename ?>" download class="receipt-summary-download-btn">Download Receipt (.txt)</a>
     </div>
   </div>
 </body>
