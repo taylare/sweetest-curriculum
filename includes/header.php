@@ -1,6 +1,32 @@
 <?php 
     session_start();
     if (!isset($base_path)) $base_path = ''; 
+    include $base_path . 'database/db.php';
+
+
+
+    //------counting the cart for badge--------//
+
+$cart_count = 0;
+
+// dheck if the user is logged in
+if (isset($_SESSION['user_id'])) {
+    // get the user's ID from the session and cast it to an integer for safety
+    $user_id = (int)$_SESSION['user_id'];
+
+    // SQL query to calculate the total number of items in the user's cart
+    $cart_query = "SELECT SUM(quantity) AS total_items FROM cart WHERE user_id = $user_id";
+
+    // executing the query
+    $cart_result = mysqli_query($dbc, $cart_query);
+
+    // if the query runs successfully and returns a result
+    if ($cart_result && $row = mysqli_fetch_assoc($cart_result)) {
+        // set cart_count to the total items found, or 0 if no rows
+        $cart_count = $row['total_items'] ?? 0;
+    }
+}
+
 ?>
 
 <!doctype html>
@@ -68,10 +94,15 @@
         <li class="nav-item"><a class="nav-link" href="<?= $base_path ?>login.php">Log in</a></li>
       <?php endif; ?>
       <!-- Cart icon -->
-      <li class="nav-item ms-3">
-        <a class="nav-link" href="<?= $base_path ?>cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
+      <li class="nav-item ms-3 position-relative">
+        <a class="nav-link" href="<?= $base_path ?>cart.php">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <?php if ($cart_count > 0): ?>
+            <span class="cart-badge"><?= $cart_count ?></span>
+          <?php endif; ?>
+        </a>
       </li>
-    </ul>
+
 
     <!-- Mobile hamburger -->
     <button class="btn btn-primary d-lg-none ms-auto" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas">
@@ -99,7 +130,9 @@
           <?php else: ?>
             <li class="nav-item"><a class="nav-link" href="<?= $base_path ?>login.php">Log in</a></li>
           <?php endif; ?>
+          
           <li class="nav-item"><a class="nav-link" href="<?= $base_path ?>cart.php"><i class="fa-solid fa-cart-shopping"></i> Cart</a></li>
+
           <li class="nav-item"><a class="nav-link" href="<?= $base_path ?>order-history.php">Order History</a></li>
           <li class="nav-item"><a class="nav-link" href="<?= $base_path ?>privacy-settings.php">Privacy Settings</a></li>
          

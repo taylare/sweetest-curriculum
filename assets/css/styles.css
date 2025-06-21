@@ -10,8 +10,6 @@
   --teaGreen: #bcffbd;
   --lilac: #ead4ff;
   --alert: #cf1acf;
-  --lilac: #ead4ff;
-  --alert: #cf1acf;
 }
 
 /* EXAMPLE OF HOW TO USE VARIABLES */
@@ -65,7 +63,7 @@ a .view-cart-link:hover {
 
 
 /************************/
-/****** MAIN PAGE *******/
+/****** header.php *******/
 /************************/
 
 
@@ -84,6 +82,24 @@ a .view-cart-link:hover {
 .navbar a {
     color: #FCF3FF;
 }
+
+.cart-badge {
+  position: absolute;
+  top: 0;
+  right: -5px;
+  background: var(--alert);
+  color: white;
+  font-size: 0.75rem;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  z-index: 10;
+}
+
 
 /************************/
 /****** INDEX PAGE ******/
@@ -2245,7 +2261,6 @@ img.card-img-top.product-card-img {
   color: #fff9fd;
   background: linear-gradient(145deg, var(--powderBlue), #c4bcff); 
   text-decoration: none;
-  width: 57%;
 
 }
 
@@ -2257,6 +2272,15 @@ img.card-img-top.product-card-img {
   color: #fff9fd;
 }
 
+.download-receipt {
+  text-decoration: none;
+  font-size: 13pt;
+}
+
+.download-receipt:hover {
+  text-decoration: underline;
+  font-size: 15pt;
+}
 
 
 /**end of order-history.php**/

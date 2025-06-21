@@ -64,7 +64,7 @@ if ($order_result) {
             <?php foreach ($orders as $order_id => $items): ?>
                 <div class="mb-5">
                     <!-- show the order number -->
-                    <h4 class="order-title">🧾 Order #<?= htmlspecialchars($order_id) ?></h4>
+                    <h4 class="order-title">🧾 Order #<?= htmlspecialchars($order_id) ?>  | <a href="orders/order_<?= $order_id ?>.txt" download class="download-receipt"> Download Receipt <i class="fa-solid fa-circle-down"></i></i> </a> </h4>
 
                     <!-- loop through each product in this order -->
                     <?php foreach ($items as $product): ?>
@@ -88,7 +88,7 @@ if ($order_result) {
                                         data-bs-target="#reviewModal<?= $product['product_id'] ?>">
                                     📝 Leave a Review
                                 </button>
-                                <div><a href="orders/order_<?= $order_id ?>" download class="review-submit-btn"> Receipt <i class="fa-solid fa-circle-down"></i></i> </a> </div>
+                                
                             </div>
                             
                         </div>
